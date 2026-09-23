@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Churn Queries — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="project-page-header">
+    <a class="back-link" href="../index.html">← back to portfolio</a>
+    <h1>SQL Churn Queries</h1>
+    <span class="status live">write-up available</span>
+  </div>
+
+  <div class="detail-section">
+    <h2>Overview</h2>
+    <p>
+      A set of MySQL queries against a 1,000-row practice telecom churn dataset — joins, aggregations,
+      a subquery, and two window functions — surfacing which customer segments churn most. This dataset
+      also powers the Interactive Churn Dashboard project.
+    </p>
+    <ul class="bullets">
+      <li>Month-to-month customers churn at 51.9%, versus 16.7% for two-year contracts.</li>
+      <li>Fiber-optic customers churn more than DSL customers in every region, despite similar pricing.</li>
+      <li>All four regions run above a 30% churn-rate target, with North highest at 40.1%.</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools</h2>
+    <div class="tools-row">
+      <span class="tool-pill">MySQL</span>
+      <span class="tool-pill">Joins</span>
+      <span class="tool-pill">Window functions</span>
+      <span class="tool-pill">Subqueries</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Write-up</h2>
+    <p>
+      This project runs six SQL queries against a 1,000-row practice telecom dataset in MySQL — covering
+      aggregation, a join against a lookup table, a subquery, and two window functions — to demonstrate SQL
+      fluency independent of the pandas-based analyses elsewhere in this portfolio.
+    </p>
+    <p>
+      The queries surface which customer segments churn most (contract type and internet type are the
+      strongest signals), flag which regions are running above a churn-rate target using a joined lookup
+      table, find high-value customers who churned anyway using a subquery, and rank customers by lifetime
+      value within each region using a window function — the kind of query patterns that come up constantly
+      in real churn/retention analysis work.
+    </p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Example query</h2>
+    <pre class="code-frame">SELECT contract_type,
+       COUNT(*) AS total_customers,
+       ROUND(100.0 * SUM(CASE WHEN churn='Yes' THEN 1 ELSE 0 END)
+             / COUNT(*), 1) AS churn_rate_pct
+FROM customers
+GROUP BY contract_type
+ORDER BY churn_rate_pct DESC;</pre>
+  </div>
+
+  <div class="detail-section">
+    <h2>Links</h2>
+    <div class="action-links">
+      <a class="primary" href="../projects/churn-dashboard.html">View live dashboard →</a>
+      <a href="../sql-project/README.md" target="_blank" rel="noopener">Full write-up →</a>
+      <a href="../sql-project/churn_queries.sql" target="_blank" rel="noopener">All queries →</a>
+      <a href="../sql-project/customers.csv" target="_blank" rel="noopener">Dataset →</a>
+      <a href="https://github.com/Om-M67" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </div>
+
+
+  <div class="project-nav">
+    <a class="prev" href="churn-dashboard.html">
+      <span class="nav-label">← previous</span>
+      <span class="nav-title">Interactive Churn Dashboard</span>
+    </a>
+    <a class="next" href="telco-churn.html">
+      <span class="nav-label">next →</span>
+      <span class="nav-title">Telco Customer Churn Analysis</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

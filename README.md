@@ -1,24 +1,50 @@
 # Portfolio site
 
-This repo is a ready-to-deploy portfolio site for GitHub Pages.
+A multi-page portfolio site, ready to deploy on GitHub Pages.
 
 ## Structure
 ```
-index.html          ← the portfolio site itself
-dashboard.html       ← interactive churn dashboard (linked from index.html)
-dashboard-data.json  ← data powering dashboard.html
-sql-project/         ← Telecom Churn SQL project (dataset, queries, write-up)
+index.html              ← homepage: hero, project card grid (opens in-page modal), skills, experience, education
+style.css                ← shared styling for every page
+dashboard.html           ← interactive churn dashboard (practice dataset)
+dashboard-data.json      ← data powering dashboard.html
+telco-dashboard.html     ← live Telco Churn dashboard (real 7,043-row dataset)
+telco-data.json          ← data powering telco-dashboard.html
+superstore-dashboard.html← live Superstore Sales dashboard (real 9,994-row dataset)
+superstore-data.json     ← data powering superstore-dashboard.html
+netflix-dashboard.html   ← live Netflix Analysis dashboard (real 8,807-row dataset)
+netflix-data.json        ← data powering netflix-dashboard.html
+resume.pdf               ← downloadable resume
+projects/
+  churn-dashboard.html    ← Interactive Churn Dashboard (embeds live demo)
+  sql-churn-queries.html  ← SQL Churn Queries
+  telco-churn.html        ← Telco Customer Churn Analysis (embeds live demo)
+  superstore-sales.html   ← Superstore Sales Analysis (embeds live demo)
+  duffing-oscillator.html ← Duffing Oscillator Simulation
+  kelogsdojo.html         ← KelogsDojo
+  netflix-analysis.html   ← Netflix Analysis (embeds live demo)
+sql-project/
   customers.csv
   churn_queries.sql
   README.md
+datasets/
+  telco-churn.csv         ← original Kaggle/IBM Telco Churn dataset
+  superstore.csv           ← original Sample Superstore dataset
+  netflix-titles.csv       ← original Netflix Movies and TV Shows dataset
 ```
 
 ## Deploy to GitHub Pages
 
-1. **Create a repo** on GitHub (either name it `Om-M67.github.io` for a root
-   site, or any other name — e.g. `portfolio` — and it'll be served at
-   `Om-M67.github.io/portfolio`).
-2. **Push these files** to the root of that repo:
+If you already have this repo live, just replace all files with these and push:
+```bash
+git add .
+git commit -m "Redesign: individual project pages"
+git push
+```
+
+If starting fresh:
+1. Create a repo on GitHub (e.g. `Om-M67.github.io` for a root site).
+2. Push these files to the repo root:
    ```bash
    git init
    git add .
@@ -27,43 +53,15 @@ sql-project/         ← Telecom Churn SQL project (dataset, queries, write-up)
    git remote add origin https://github.com/Om-M67/YOUR-REPO-NAME.git
    git push -u origin main
    ```
-3. **Turn on Pages**: in the repo, go to *Settings → Pages*, set Source to
-   `main` branch, `/ (root)` folder, save.
-4. Give it a minute — your site will be live at the URL GitHub shows you.
+3. Settings → Pages → Source: `main` branch, `/ (root)` folder → Save.
 
-## Before you push
+## Still to do
 
-Your real contact info, projects, skills, experience, and education are already
-filled in from your resume. Only these still need a real link (currently `#`):
-- The **Telco Customer Churn Analysis**, **Superstore Sales Analysis**,
-  **Duffing Oscillator**, **KelogsDojo**, and **Netflix Analysis** project cards
-  → point each to its real GitHub repo once pushed
-- `resume.pdf` is already included in this folder — no change needed unless you
-  update your resume later (just replace the file, keep the same name)
-
-## Still in progress
-
-- **Power BI Desktop file (.pbix)** — I can't run Power BI Desktop myself (it's a
-  Windows GUI app), so `dashboard.html` is a real, working interactive dashboard
-  built in HTML + Chart.js on the same dataset — it's live and linked from the
-  site now. If your resume bullet specifically says "Power BI," build the actual
-  `.pbix` too using the steps below (~30–45 min), then add a screenshot or a
-  Publish-to-Web embed link to `index.html`.
-
-### Power BI Desktop build steps
-
-1. Open Power BI Desktop → **Get Data → Text/CSV** → import `sql-project/customers.csv`
-2. **Model data**: confirm `tenure_months`, `monthly_charges`, `total_charges` are
-   typed as numbers, `churn` as text
-3. **KPI cards**: add 4 Card visuals —
-   - Total customers → `Count of customer_id`
-   - Churned customers → new measure: `Churned = CALCULATE(COUNT(customers[customer_id]), customers[churn]="Yes")`
-   - Churn rate → new measure: `Churn Rate = DIVIDE([Churned], COUNT(customers[customer_id])) `, format as %
-   - Avg monthly charge → `Average of monthly_charges`
-4. **Bar chart**: Churn Rate (the measure above) by `contract_type`
-5. **Donut chart**: Count of customers by `internet_type`
-6. **Line chart**: Average of `monthly_charges` by `tenure_months`
-7. **Slicer**: add a Slicer visual on `region`, connect it to all visuals (default behavior)
-8. Save as `.pbix`, add to `sql-project/` (or a new `power-bi/` folder) and push to GitHub
-9. Optional: **File → Publish to web** to get a live embeddable link for `index.html`
-
+- The write-up-only project pages (Duffing Oscillator, KelogsDojo) each have a
+  "View on GitHub" link pointing at your GitHub profile as a placeholder —
+  once each project has its own repo, update that `href` to the specific repo URL.
+- Telco Churn, Superstore, and Netflix now have real live dashboards (built
+  from your actual datasets) — same placeholder GitHub link applies to those too.
+- If you build the real Power BI `.pbix` file, add it (and a screenshot) to
+  `sql-project/` or a new `power-bi/` folder, and reference it from
+  `projects/churn-dashboard.html`.

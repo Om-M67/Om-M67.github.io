@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superstore Sales Dashboard — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #12141A; --panel: #1A1E27; --panel-line: #262B36;
+    --text: #E9E6DE; --text-dim: #8890A0; --accent: #5FD9C4; --accent-2: #E8A855;
+    --serif: 'Newsreader', serif; --sans: 'IBM Plex Sans', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.5;
+    background-image: linear-gradient(var(--panel-line) 1px, transparent 1px), linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+  .dash-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--panel-line); }
+  .dash-header .kicker { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 10px; }
+  .dash-header h1 { font-family: var(--serif); font-weight: 500; font-size: 32px; }
+  .back-link { font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--panel-line); }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+  .filter-row { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); }
+  select { background: var(--panel); color: var(--text); border: 1px solid var(--panel-line); padding: 8px 12px; border-radius: 3px; font-family: var(--mono); font-size: 13px; }
+  select:focus { outline: 1px solid var(--accent); }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .kpi-card { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 4px; padding: 20px; }
+  .kpi-card .label { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); text-transform: lowercase; }
+  .kpi-card .value { font-family: var(--serif); font-size: 28px; margin-top: 8px; color: var(--text); }
+  .kpi-card.warn .value { color: var(--accent-2); }
+  .kpi-card.good .value { color: var(--accent); }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .chart-card { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 4px; padding: 20px; }
+  .chart-card h3 { font-family: var(--sans); font-weight: 500; font-size: 14px; color: var(--text); margin-bottom: 16px; }
+  .chart-card .chart-wrap { position: relative; height: 260px; }
+  .full-row { grid-column: 1 / -1; }
+  footer { margin-top: 40px; font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); opacity: 0.6; }
+  @media (max-width: 800px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .chart-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="dash-header">
+    <div>
+      <div class="kicker">// superstore sales — 9,994 real transactions</div>
+      <h1>Superstore Sales Dashboard</h1>
+    </div>
+    <a class="back-link" href="index.html">← back to portfolio</a>
+  </div>
+
+  <div class="filter-row">
+    <span>Filter by region:</span>
+    <select id="regionFilter">
+      <option value="All">All regions</option>
+      <option value="West">West</option>
+      <option value="East">East</option>
+      <option value="Central">Central</option>
+      <option value="South">South</option>
+    </select>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="label">total sales</div><div class="value" id="kpiSales">—</div></div>
+    <div class="kpi-card good"><div class="label">total profit</div><div class="value" id="kpiProfit">—</div></div>
+    <div class="kpi-card"><div class="label">orders (line items)</div><div class="value" id="kpiOrders">—</div></div>
+    <div class="kpi-card warn"><div class="label">profit margin</div><div class="value" id="kpiMargin">—</div></div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Profit by category</h3>
+      <div class="chart-wrap"><canvas id="categoryChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Profit by sub-category (top 8, best &amp; worst)</h3>
+      <div class="chart-wrap"><canvas id="subcatChart"></canvas></div>
+    </div>
+    <div class="chart-card full-row">
+      <h3>Monthly sales trend</h3>
+      <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    </div>
+  </div>
+
+  <footer>Data: Sample Superstore dataset, 9,994 order line items (2014–2017).</footer>
+</div>
+
+<script>
+let allData = [];
+let charts = {};
+const palette = { accent: '#5FD9C4', accent2: '#E8A855', dim: '#8890A0', line: '#262B36', bad: '#E8825A' };
+Chart.defaults.color = palette.dim;
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.font.size = 11.5;
+
+fetch('superstore-data.json')
+  .then(r => r.json())
+  .then(data => { allData = data; render('All'); })
+  .catch(() => {
+    document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
+      '<p style="color:#E8A855;font-family:monospace;margin-bottom:20px;">Could not load superstore-data.json — make sure it sits alongside this file.</p>');
+  });
+
+document.getElementById('regionFilter').addEventListener('change', e => render(e.target.value));
+
+function fmtMoney(n) {
+  if (Math.abs(n) >= 1000) return '$' + (n / 1000).toFixed(1) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+function render(region) {
+  const data = region === 'All' ? allData : allData.filter(d => d.region === region);
+  const totalSales = data.reduce((s, d) => s + d.sales, 0);
+  const totalProfit = data.reduce((s, d) => s + d.profit, 0);
+  const margin = totalSales ? (100 * totalProfit / totalSales).toFixed(1) : '0.0';
+
+  document.getElementById('kpiSales').textContent = fmtMoney(totalSales);
+  document.getElementById('kpiProfit').textContent = fmtMoney(totalProfit);
+  document.getElementById('kpiOrders').textContent = data.length.toLocaleString();
+  document.getElementById('kpiMargin').textContent = margin + '%';
+
+  renderCategoryChart(data);
+  renderSubcatChart(data);
+  renderTrendChart(data);
+}
+
+function renderCategoryChart(data) {
+  const groups = {};
+  data.forEach(d => { groups[d.category] = (groups[d.category] || 0) + d.profit; });
+  const rows = Object.entries(groups).sort((a, b) => b[1] - a[1]);
+  if (charts.category) charts.category.destroy();
+  charts.category = new Chart(document.getElementById('categoryChart'), {
+    type: 'bar',
+    data: { labels: rows.map(r => r[0]), datasets: [{ label: 'Profit', data: rows.map(r => +r[1].toFixed(0)), backgroundColor: rows.map(r => r[1] >= 0 ? palette.accent : palette.bad), borderRadius: 3, maxBarThickness: 60 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: palette.line }, ticks: { callback: v => fmtMoney(v) } }, x: { grid: { display: false } } } }
+  });
+}
+
+function renderSubcatChart(data) {
+  const groups = {};
+  data.forEach(d => { groups[d.subcat] = (groups[d.subcat] || 0) + d.profit; });
+  const sorted = Object.entries(groups).sort((a, b) => b[1] - a[1]);
+  const top4 = sorted.slice(0, 4);
+  const bottom4 = sorted.slice(-4);
+  const rows = [...top4, ...bottom4];
+  if (charts.subcat) charts.subcat.destroy();
+  charts.subcat = new Chart(document.getElementById('subcatChart'), {
+    type: 'bar',
+    data: { labels: rows.map(r => r[0]), datasets: [{ label: 'Profit', data: rows.map(r => +r[1].toFixed(0)), backgroundColor: rows.map(r => r[1] >= 0 ? palette.accent : palette.bad), borderRadius: 3 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { x: { grid: { color: palette.line }, ticks: { callback: v => fmtMoney(v) } }, y: { grid: { display: false }, ticks: { font: { size: 10.5 } } } } }
+  });
+}
+
+function renderTrendChart(data) {
+  const groups = {};
+  data.forEach(d => { if (d.date) groups[d.date] = (groups[d.date] || 0) + d.sales; });
+  const months = Object.keys(groups).sort();
+  const values = months.map(m => +groups[m].toFixed(0));
+  if (charts.trend) charts.trend.destroy();
+  charts.trend = new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: { labels: months, datasets: [{ label: 'Monthly sales', data: values, borderColor: palette.accent, backgroundColor: 'rgba(95, 217, 196, 0.1)', fill: true, tension: 0.25, pointRadius: 0, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: palette.line }, ticks: { callback: v => fmtMoney(v) } }, x: { grid: { display: false }, ticks: { maxTicksLimit: 12, font: { size: 10 } } } } }
+  });
+}
+</script>
+</body>
+</html>

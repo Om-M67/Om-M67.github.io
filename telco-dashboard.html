@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telco Churn Dashboard — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #12141A; --panel: #1A1E27; --panel-line: #262B36;
+    --text: #E9E6DE; --text-dim: #8890A0; --accent: #5FD9C4; --accent-2: #E8A855;
+    --serif: 'Newsreader', serif; --sans: 'IBM Plex Sans', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.5;
+    background-image: linear-gradient(var(--panel-line) 1px, transparent 1px), linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+  .dash-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--panel-line); }
+  .dash-header .kicker { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 10px; }
+  .dash-header h1 { font-family: var(--serif); font-weight: 500; font-size: 32px; }
+  .back-link { font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; border-bottom: 1px solid var(--panel-line); }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+  .filter-row { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); }
+  select { background: var(--panel); color: var(--text); border: 1px solid var(--panel-line); padding: 8px 12px; border-radius: 3px; font-family: var(--mono); font-size: 13px; }
+  select:focus { outline: 1px solid var(--accent); }
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .kpi-card { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 4px; padding: 20px; }
+  .kpi-card .label { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); text-transform: lowercase; }
+  .kpi-card .value { font-family: var(--serif); font-size: 30px; margin-top: 8px; color: var(--text); }
+  .kpi-card.warn .value { color: var(--accent-2); }
+  .kpi-card.good .value { color: var(--accent); }
+  .chart-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; margin-bottom: 20px; }
+  .chart-card { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 4px; padding: 20px; }
+  .chart-card h3 { font-family: var(--sans); font-weight: 500; font-size: 14px; color: var(--text); margin-bottom: 16px; }
+  .chart-card .chart-wrap { position: relative; height: 260px; }
+  .full-row { grid-column: 1 / -1; }
+  footer { margin-top: 40px; font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); opacity: 0.6; }
+  @media (max-width: 800px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .chart-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="dash-header">
+    <div>
+      <div class="kicker">// telco customer churn — 7,043 real customers</div>
+      <h1>Telco Churn Dashboard</h1>
+    </div>
+    <a class="back-link" href="index.html">← back to portfolio</a>
+  </div>
+
+  <div class="filter-row">
+    <span>Filter by internet service:</span>
+    <select id="internetFilter">
+      <option value="All">All</option>
+      <option value="DSL">DSL</option>
+      <option value="Fiber optic">Fiber optic</option>
+      <option value="No">No internet</option>
+    </select>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="label">total customers</div><div class="value" id="kpiTotal">—</div></div>
+    <div class="kpi-card warn"><div class="label">churned customers</div><div class="value" id="kpiChurned">—</div></div>
+    <div class="kpi-card warn"><div class="label">churn rate</div><div class="value" id="kpiRate">—</div></div>
+    <div class="kpi-card good"><div class="label">avg monthly charge</div><div class="value" id="kpiAvgCharge">—</div></div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Churn rate by contract type</h3>
+      <div class="chart-wrap"><canvas id="contractChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Customers by payment method</h3>
+      <div class="chart-wrap"><canvas id="paymentChart"></canvas></div>
+    </div>
+    <div class="chart-card full-row">
+      <h3>Average monthly charge by tenure (0–72 months)</h3>
+      <div class="chart-wrap"><canvas id="tenureChart"></canvas></div>
+    </div>
+  </div>
+
+  <footer>Data: IBM Telco Customer Churn dataset, 7,043 customers.</footer>
+</div>
+
+<script>
+let allData = [];
+let charts = {};
+const palette = { accent: '#5FD9C4', accent2: '#E8A855', dim: '#8890A0', line: '#262B36' };
+Chart.defaults.color = palette.dim;
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.font.size = 11.5;
+
+fetch('telco-data.json')
+  .then(r => r.json())
+  .then(data => { allData = data; render('All'); })
+  .catch(() => {
+    document.querySelector('.wrap').insertAdjacentHTML('afterbegin',
+      '<p style="color:#E8A855;font-family:monospace;margin-bottom:20px;">Could not load telco-data.json — make sure it sits alongside this file.</p>');
+  });
+
+document.getElementById('internetFilter').addEventListener('change', e => render(e.target.value));
+
+function render(internet) {
+  const data = internet === 'All' ? allData : allData.filter(d => d.internet === internet);
+  const total = data.length;
+  const churned = data.filter(d => d.churn === 'Yes').length;
+  const rate = total ? (100 * churned / total).toFixed(1) : '0.0';
+  const avgCharge = total ? (data.reduce((s, d) => s + d.monthly, 0) / total).toFixed(2) : '0.00';
+
+  document.getElementById('kpiTotal').textContent = total.toLocaleString();
+  document.getElementById('kpiChurned').textContent = churned.toLocaleString();
+  document.getElementById('kpiRate').textContent = rate + '%';
+  document.getElementById('kpiAvgCharge').textContent = '$' + avgCharge;
+
+  renderContractChart(data);
+  renderPaymentChart(data);
+  renderTenureChart(data);
+}
+
+function groupChurnRate(data, key) {
+  const groups = {};
+  data.forEach(d => {
+    const k = d[key];
+    if (!groups[k]) groups[k] = { total: 0, churned: 0 };
+    groups[k].total++;
+    if (d.churn === 'Yes') groups[k].churned++;
+  });
+  return Object.entries(groups).map(([k, v]) => ({ label: k, rate: v.total ? +(100 * v.churned / v.total).toFixed(1) : 0 }));
+}
+
+function renderContractChart(data) {
+  const rows = groupChurnRate(data, 'contract').sort((a, b) => b.rate - a.rate);
+  if (charts.contract) charts.contract.destroy();
+  charts.contract = new Chart(document.getElementById('contractChart'), {
+    type: 'bar',
+    data: { labels: rows.map(r => r.label), datasets: [{ label: 'Churn rate %', data: rows.map(r => r.rate), backgroundColor: palette.accent2, borderRadius: 3, maxBarThickness: 60 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, grid: { color: palette.line }, ticks: { callback: v => v + '%' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function renderPaymentChart(data) {
+  const groups = {};
+  data.forEach(d => { groups[d.payment] = (groups[d.payment] || 0) + 1; });
+  const labels = Object.keys(groups);
+  const values = Object.values(groups);
+  if (charts.payment) charts.payment.destroy();
+  charts.payment = new Chart(document.getElementById('paymentChart'), {
+    type: 'doughnut',
+    data: { labels, datasets: [{ data: values, backgroundColor: [palette.accent, palette.accent2, '#4A5568', '#8890A0'], borderColor: '#1A1E27', borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10.5 } } } } }
+  });
+}
+
+function renderTenureChart(data) {
+  const byTenure = {};
+  data.forEach(d => { if (!byTenure[d.tenure]) byTenure[d.tenure] = []; byTenure[d.tenure].push(d.monthly); });
+  const tenures = Object.keys(byTenure).map(Number).sort((a, b) => a - b);
+  const avgs = tenures.map(t => { const arr = byTenure[t]; return +(arr.reduce((s, v) => s + v, 0) / arr.length).toFixed(2); });
+  if (charts.tenure) charts.tenure.destroy();
+  charts.tenure = new Chart(document.getElementById('tenureChart'), {
+    type: 'line',
+    data: { labels: tenures, datasets: [{ label: 'Avg monthly charge', data: avgs, borderColor: palette.accent, backgroundColor: 'rgba(95, 217, 196, 0.1)', fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+      scales: { y: { grid: { color: palette.line }, ticks: { callback: v => '$' + v } }, x: { grid: { display: false }, title: { display: true, text: 'Tenure (months)', color: palette.dim } } } }
+  });
+}
+</script>
+</body>
+</html>

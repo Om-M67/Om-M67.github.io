@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superstore Sales Analysis — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="project-page-header">
+    <a class="back-link" href="../index.html">← back to portfolio</a>
+    <h1>Superstore Sales Analysis</h1>
+    <span class="status live">write-up available</span>
+  </div>
+
+  <div class="detail-section">
+    <h2>Overview</h2>
+    <ul class="bullets">
+      <li>Performed end-to-end exploratory data analysis on 9,994 retail transactions spanning 4 years; uncovered that Tables and Bookcases were loss-making despite high sales volume.</li>
+      <li>Built 5 visualizations including monthly sales trend lines and regional bar charts; identified the West region as top revenue generator ($725K) and Technology as most profitable category ($145K profit).</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>Write-up</h2>
+    <p>
+      This project used the Sample Superstore dataset — 9,994 order line items across Furniture, Office
+      Supplies, and Technology, spanning 2014–2017 — to find where the business actually makes and loses money.
+    </p>
+    <p>
+      Overall the business generated $2.30M in sales at a 12.5% profit margin ($286K profit). But that margin
+      hides a split: Technology and Office Supplies both post healthy profits ($145K and $122K respectively),
+      while Furniture as a category is barely profitable overall — dragged down almost entirely by two
+      sub-categories. Tables lost $17.7K and Bookcases lost $3.5K, despite both selling in real volume — a
+      classic case of a product line that looks fine on a sales report but is quietly losing money on every
+      unit, likely due to discounting or high shipping/handling costs relative to price.
+    </p>
+    <p>
+      On the other end, Copiers ($55.6K profit), Phones ($44.5K), and Accessories ($41.9K) were the strongest
+      sub-categories — all Technology, reinforcing that category as the one to double down on. Regionally,
+      West led in total sales at $725K, followed closely by East at $679K, with Central and South trailing.
+    </p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools</h2>
+    <div class="tools-row">
+      <span class="tool-pill">Python</span>
+      <span class="tool-pill">Pandas</span>
+      <span class="tool-pill">Matplotlib</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Live demo</h2>
+    <div class="demo-frame">
+      <iframe src="../superstore-dashboard.html" title="Superstore Sales Dashboard"></iframe>
+    </div>
+    <div class="demo-link-row">
+      <div class="action-links">
+        <a class="primary" href="../superstore-dashboard.html" target="_blank" rel="noopener">Open full screen →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Links</h2>
+    <div class="action-links">
+      <a href="https://github.com/Om-M67" target="_blank" rel="noopener">View on GitHub →</a>
+      <a href="../datasets/superstore.csv" target="_blank" rel="noopener">Dataset →</a>
+    </div>
+  </div>
+
+
+  <div class="project-nav">
+    <a class="prev" href="telco-churn.html">
+      <span class="nav-label">← previous</span>
+      <span class="nav-title">Telco Customer Churn Analysis</span>
+    </a>
+    <a class="next" href="duffing-oscillator.html">
+      <span class="nav-label">next →</span>
+      <span class="nav-title">Duffing Oscillator Simulation</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

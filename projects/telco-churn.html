@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telco Customer Churn Analysis — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="project-page-header">
+    <a class="back-link" href="../index.html">← back to portfolio</a>
+    <h1>Telco Customer Churn Analysis</h1>
+    <span class="status live">write-up available</span>
+  </div>
+
+  <div class="detail-section">
+    <h2>Overview</h2>
+    <ul class="bullets">
+      <li>Analyzed churn patterns across 7,043 telecom customers to identify root causes and at-risk segments; found month-to-month contracts churn at 42.7%, over 15x the rate of two-year contracts.</li>
+      <li>Communicated findings through clear visualizations and written summaries, conveying actionable insights to non-technical audiences.</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>Write-up</h2>
+    <p>
+      This project used the IBM/Kaggle Telco Customer Churn dataset — 7,043 customers with contract type,
+      internet service, tenure, billing, and demographic fields — to find where churn concentrates and why.
+    </p>
+    <p>
+      Contract length was the single strongest predictor: month-to-month customers churn at 42.7%, versus
+      just 2.8% for two-year contracts — a 15x gap. Internet service type mattered too: fiber-optic
+      customers churn at 41.9%, more than double DSL's 19.0%, despite fiber typically being the premium,
+      "better" service — suggesting reliability or price perception issues rather than a technology gap.
+      Payment method was a smaller but real signal: customers paying by electronic check churn at 45.3%,
+      the highest of any payment method.
+    </p>
+    <p>
+      Tenure told the same story from a different angle: customers who churned had stuck around for an
+      average of 18.0 months before leaving, versus 37.6 months for retained customers — reinforcing that
+      the first year or so is the highest-risk window for losing a customer.
+    </p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools</h2>
+    <div class="tools-row">
+      <span class="tool-pill">Python</span>
+      <span class="tool-pill">Pandas</span>
+      <span class="tool-pill">Matplotlib</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Live demo</h2>
+    <div class="demo-frame">
+      <iframe src="../telco-dashboard.html" title="Telco Churn Dashboard"></iframe>
+    </div>
+    <div class="demo-link-row">
+      <div class="action-links">
+        <a class="primary" href="../telco-dashboard.html" target="_blank" rel="noopener">Open full screen →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Links</h2>
+    <div class="action-links">
+      <a href="https://github.com/Om-M67" target="_blank" rel="noopener">View on GitHub →</a>
+      <a href="../datasets/telco-churn.csv" target="_blank" rel="noopener">Dataset →</a>
+    </div>
+  </div>
+
+  <div class="project-nav">
+    <a class="prev" href="sql-churn-queries.html">
+      <span class="nav-label">← previous</span>
+      <span class="nav-title">SQL Churn Queries</span>
+    </a>
+    <a class="next" href="superstore-sales.html">
+      <span class="nav-label">next →</span>
+      <span class="nav-title">Superstore Sales Analysis</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

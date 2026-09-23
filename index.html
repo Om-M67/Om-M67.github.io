@@ -6,112 +6,7 @@
 <title>Om Mistry — Data & Technical Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #12141A;
-    --panel: #1A1E27;
-    --panel-line: #262B36;
-    --text: #E9E6DE;
-    --text-dim: #8890A0;
-    --accent: #5FD9C4;
-    --accent-2: #E8A855;
-    --serif: 'Newsreader', serif;
-    --sans: 'IBM Plex Sans', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.6;
-    background-image:
-      linear-gradient(var(--panel-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
-    background-size: 64px 64px;
-    background-attachment: fixed;
-    background-position: -1px -1px;
-  }
-  ::selection { background: var(--accent); color: #0B0C10; }
-  a { color: inherit; }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
-
-  header.hero { padding: 88px 0 72px; border-bottom: 1px solid var(--panel-line); }
-  .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end; }
-  .kicker { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 18px; }
-  h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 5.2vw, 54px); line-height: 1.1; color: var(--text); max-width: 13ch; }
-  .hero-sub { font-size: 16px; color: var(--text-dim); max-width: 50ch; margin-top: 20px; }
-  .hero-location { font-family: var(--mono); font-size: 13px; color: var(--text-dim); margin-top: 18px; }
-  .hero-links { display: flex; flex-direction: column; gap: 10px; font-family: var(--mono); font-size: 14px; }
-  .hero-links a { text-decoration: none; color: var(--text-dim); border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; width: fit-content; }
-  .hero-links a:hover { color: var(--accent); border-color: var(--accent); }
-  .hero-links .resume-link { color: var(--bg); background: var(--accent); padding: 8px 14px; border-radius: 2px; font-weight: 500; margin-top: 6px; }
-  .hero-links .resume-link:hover { color: var(--bg); background: #7EE6D4; border-color: transparent; }
-
-  section { padding: 64px 0; border-bottom: 1px solid var(--panel-line); }
-  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; gap: 20px; }
-  .section-head h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; }
-  .section-head .count { font-family: var(--mono); font-size: 13px; color: var(--text-dim); white-space: nowrap; }
-
-  .project { display: grid; grid-template-columns: 88px 1fr; gap: 28px; padding: 32px 0; border-top: 1px solid var(--panel-line); }
-  .project:first-of-type { border-top: none; padding-top: 0; }
-  .project-motif { padding-top: 4px; }
-  .project-motif svg { width: 100%; height: auto; }
-  .project-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .project h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; }
-  .status { font-family: var(--mono); font-size: 11.5px; padding: 3px 8px; border-radius: 2px; white-space: nowrap; }
-  .status.live { color: var(--accent); border: 1px solid var(--accent); }
-  .status.progress { color: var(--accent-2); border: 1px solid var(--accent-2); }
-  .project p { color: var(--text-dim); margin-top: 10px; max-width: 62ch; font-size: 15px; }
-  .project ul.bullets { margin-top: 10px; padding-left: 18px; max-width: 62ch; }
-  .project ul.bullets li { color: var(--text-dim); font-size: 14.5px; margin-bottom: 6px; }
-  .project .insight { color: var(--text); font-size: 14.5px; margin-top: 12px; padding-left: 14px; border-left: 2px solid var(--panel-line); }
-  .project .tools { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 16px; }
-  .project .tools span { color: var(--accent); }
-  .project-links { margin-top: 14px; display: flex; gap: 18px; font-family: var(--mono); font-size: 13px; flex-wrap: wrap; }
-  .project-links a { text-decoration: none; color: var(--text-dim); border-bottom: 1px solid var(--panel-line); }
-  .project-links a:hover { color: var(--accent); border-color: var(--accent); }
-  pre.placeholder-frame { margin-top: 18px; border: 1px solid var(--panel-line); border-radius: 3px; padding: 18px; background: var(--panel); font-family: var(--mono); font-size: 12.5px; color: var(--text); line-height: 1.55; overflow-x: auto; white-space: pre-wrap; text-align: left; }
-
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; }
-  .skill-block h4 { font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: lowercase; margin-bottom: 10px; }
-  .skill-block ul { list-style: none; font-size: 14.5px; color: var(--text-dim); }
-  .skill-block li { padding: 4px 0; border-bottom: 1px solid var(--panel-line); }
-  .skill-block li:last-child { border-bottom: none; }
-
-  .xp-entry { padding: 24px 0; border-top: 1px solid var(--panel-line); }
-  .xp-entry:first-of-type { border-top: none; padding-top: 0; }
-  .xp-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; }
-  .xp-head h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; }
-  .xp-head .xp-place { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); }
-  .xp-head .xp-date { font-family: var(--mono); font-size: 12.5px; color: var(--accent); white-space: nowrap; }
-  .xp-entry ul { margin-top: 10px; padding-left: 18px; max-width: 66ch; }
-  .xp-entry li { color: var(--text-dim); font-size: 14.5px; margin-bottom: 6px; }
-
-  .edu-entry { padding: 8px 0; }
-  .edu-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px; }
-  .edu-head h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; }
-  .edu-head .edu-place { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); }
-  .edu-head .edu-date { font-family: var(--mono); font-size: 12.5px; color: var(--accent); white-space: nowrap; }
-  .edu-entry p { color: var(--text-dim); font-size: 14.5px; margin-top: 10px; max-width: 66ch; }
-
-  footer { padding: 56px 0 80px; }
-  footer .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; }
-  footer h2 { font-family: var(--serif); font-size: 26px; font-weight: 500; max-width: 16ch; }
-  footer .foot-links { display: flex; gap: 22px; font-family: var(--mono); font-size: 13.5px; flex-wrap: wrap; }
-  footer .foot-links a { text-decoration: none; color: var(--text-dim); border-bottom: 1px solid var(--panel-line); }
-  footer .foot-links a:hover { color: var(--accent); border-color: var(--accent); }
-  footer .fine-print { margin-top: 40px; font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); opacity: 0.6; }
-
-  @media (max-width: 640px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-links { flex-direction: row; flex-wrap: wrap; }
-    .project { grid-template-columns: 1fr; }
-    .project-motif { width: 56px; }
-  }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -125,8 +20,7 @@
         <p class="hero-sub">
           Physics graduate with experience in analytical problem-solving, Python programming, and cloud
           technologies. Azure AI and Azure Fundamentals certified. Skilled at diagnosing complex issues,
-          communicating technical findings clearly, and collaborating across teams — eager to apply
-          technical and investigative skills in a client-facing or data-driven role.
+          communicating technical findings clearly, and collaborating across teams.
         </p>
         <div class="hero-location">Toronto, ON, Canada</div>
       </div>
@@ -146,192 +40,107 @@
       <span class="count">07 total</span>
     </div>
 
-    <!-- PROJECT: Customer Churn Dashboard (interactive, built on synthetic practice data) -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <rect x="4" y="34" width="10" height="20" fill="#E8A855" opacity="0.5"/>
-          <rect x="18" y="20" width="10" height="34" fill="#E8A855" opacity="0.7"/>
-          <rect x="32" y="8" width="10" height="46" fill="#E8A855"/>
-          <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>Interactive Churn Dashboard</h3>
-          <span class="status live">live dashboard</span>
-        </div>
-        <p>
-          A working interactive dashboard — KPI cards, churn-rate breakdowns by contract and internet
-          type, and a live region filter that recalculates every chart. Built on a 1,000-row practice
-          dataset to demonstrate dashboard design and data modeling end-to-end (separate from the
-          pandas-based Telco Churn analysis below, which uses the full 7,043-customer dataset).
-        </p>
-        <div class="tools">tools — <span>JavaScript</span> · <span>Chart.js</span> · <span>data modeling</span></div>
-        <div class="project-links">
-          <a href="dashboard.html" target="_blank" rel="noopener">Open live dashboard →</a>
-        </div>
-      </div>
-    </div>
+    <div class="project-grid">
 
-    <!-- PROJECT: SQL Churn Queries -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <rect x="6" y="6" width="68" height="48" rx="2" stroke="#5FD9C4" stroke-width="1.5"/>
-          <line x1="6" y1="20" x2="74" y2="20" stroke="#5FD9C4" stroke-width="1.5"/>
-          <line x1="24" y1="20" x2="24" y2="54" stroke="#262B36" stroke-width="1.5"/>
-          <line x1="14" y1="30" x2="30" y2="30" stroke="#8890A0" stroke-width="1.5"/>
-          <line x1="14" y1="38" x2="26" y2="38" stroke="#8890A0" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>SQL Churn Queries</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/churn-dashboard.html" onclick="return openModal(event, 0)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <rect x="4" y="34" width="10" height="20" fill="#E8A855" opacity="0.5"/>
+            <rect x="18" y="20" width="10" height="34" fill="#E8A855" opacity="0.7"/>
+            <rect x="32" y="8" width="10" height="46" fill="#E8A855"/>
+            <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
+          </svg>
         </div>
-        <p>
-          A set of MySQL queries against a practice telecom churn dataset — joins, aggregations,
-          a subquery, and two window functions — feeding the dashboard above.
-        </p>
-        <pre class="placeholder-frame">SELECT contract_type,
-       COUNT(*) AS total_customers,
-       ROUND(100.0 * SUM(CASE WHEN churn='Yes' THEN 1 ELSE 0 END)
-             / COUNT(*), 1) AS churn_rate_pct
-FROM customers
-GROUP BY contract_type
-ORDER BY churn_rate_pct DESC;</pre>
-        <div class="tools">tools — <span>MySQL</span> · <span>joins</span> · <span>window functions</span></div>
-        <div class="project-links">
-          <a href="sql-project/README.md" target="_blank" rel="noopener">Full write-up →</a>
-          <a href="sql-project/churn_queries.sql" target="_blank" rel="noopener">All queries →</a>
-          <a href="sql-project/customers.csv" target="_blank" rel="noopener">Dataset →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">live dashboard</span>
+        <h3>Interactive Churn Dashboard</h3>
+        <p>KPI cards, churn breakdowns, and a live region filter built on a practice telecom dataset.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
-    <!-- PROJECT: Telco Customer Churn Analysis (real resume project) -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <polyline points="4,46 18,40 32,44 46,22 60,28 76,10" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
-          <circle cx="76" cy="10" r="3" fill="#5FD9C4"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>Telco Customer Churn Analysis</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/sql-churn-queries.html" onclick="return openModal(event, 1)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <rect x="6" y="6" width="68" height="48" rx="2" stroke="#5FD9C4" stroke-width="1.5"/>
+            <line x1="6" y1="20" x2="74" y2="20" stroke="#5FD9C4" stroke-width="1.5"/>
+            <line x1="24" y1="20" x2="24" y2="54" stroke="#262B36" stroke-width="1.5"/>
+            <line x1="14" y1="30" x2="30" y2="30" stroke="#8890A0" stroke-width="1.5"/>
+            <line x1="14" y1="38" x2="26" y2="38" stroke="#8890A0" stroke-width="1.5"/>
+          </svg>
         </div>
-        <ul class="bullets">
-          <li>Analyzed churn patterns across 7,043 telecom customers to identify root causes and at-risk segments; found month-to-month contracts churn at 42.7%, over 15x the rate of two-year contracts.</li>
-          <li>Communicated findings through clear visualizations and written summaries, conveying actionable insights to non-technical audiences.</li>
-        </ul>
-        <div class="tools">tools — <span>Python</span> · <span>Pandas</span> · <span>Matplotlib</span></div>
-        <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">write-up available</span>
+        <h3>SQL Churn Queries</h3>
+        <p>MySQL joins, aggregations, a subquery, and window functions against a churn dataset.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
-    <!-- PROJECT: Superstore Sales Analysis -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <rect x="4" y="34" width="10" height="20" fill="#5FD9C4" opacity="0.5"/>
-          <rect x="18" y="14" width="10" height="40" fill="#5FD9C4" opacity="0.8"/>
-          <rect x="32" y="26" width="10" height="28" fill="#5FD9C4" opacity="0.5"/>
-          <rect x="46" y="6" width="10" height="48" fill="#5FD9C4"/>
-          <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>Superstore Sales Analysis</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/telco-churn.html" onclick="return openModal(event, 2)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <polyline points="4,46 18,40 32,44 46,22 60,28 76,10" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
+            <circle cx="76" cy="10" r="3" fill="#5FD9C4"/>
+          </svg>
         </div>
-        <ul class="bullets">
-          <li>Performed end-to-end exploratory data analysis on 9,994 retail transactions spanning 4 years; uncovered that Tables and Bookcases were loss-making despite high sales volume.</li>
-          <li>Built 5 visualizations including monthly sales trend lines and regional bar charts; identified the West region as top revenue generator ($725K) and Technology as most profitable category ($145K profit).</li>
-        </ul>
-        <div class="tools">tools — <span>Python</span> · <span>Pandas</span> · <span>Matplotlib</span></div>
-        <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">write-up available</span>
+        <h3>Telco Customer Churn Analysis</h3>
+        <p>Churn patterns across 7,043 telecom customers — month-to-month churns 15x more than 2-year contracts.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
-    <!-- PROJECT: Duffing Oscillator -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <path d="M2 30 Q 12 6, 22 30 T 42 30 Q 52 54, 62 30 T 78 30" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>Duffing Oscillator Simulation and Fourier Analysis</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/superstore-sales.html" onclick="return openModal(event, 3)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <rect x="4" y="34" width="10" height="20" fill="#5FD9C4" opacity="0.5"/>
+            <rect x="18" y="14" width="10" height="40" fill="#5FD9C4" opacity="0.8"/>
+            <rect x="32" y="26" width="10" height="28" fill="#5FD9C4" opacity="0.5"/>
+            <rect x="46" y="6" width="10" height="48" fill="#5FD9C4"/>
+            <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
+          </svg>
         </div>
-        <ul class="bullets">
-          <li>Implemented a numerical solution using the fourth-order Runge-Kutta method, demonstrating ability to reason through and debug complex algorithmic logic.</li>
-          <li>Applied Discrete Fourier Transform (DFT) to study frequency components; developed scripts utilizing NumPy, SciPy, and Matplotlib for efficient computation and analysis.</li>
-        </ul>
-        <div class="tools">tools — <span>Python</span> · <span>Jupyter Notebook</span> · <span>NumPy</span> · <span>SciPy</span></div>
-        <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">write-up available</span>
+        <h3>Superstore Sales Analysis</h3>
+        <p>EDA across 9,994 retail transactions — West region leads revenue at $725K.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
-    <!-- PROJECT: KelogsDojo -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <rect x="10" y="8" width="24" height="34" rx="2" stroke="#E8A855" stroke-width="1.5" transform="rotate(-8 22 25)"/>
-          <rect x="30" y="14" width="24" height="34" rx="2" fill="#12141A" stroke="#E8A855" stroke-width="1.5" transform="rotate(6 42 31)"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>KelogsDojo</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/duffing-oscillator.html" onclick="return openModal(event, 4)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <path d="M2 30 Q 12 6, 22 30 T 42 30 Q 52 54, 62 30 T 78 30" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
+          </svg>
         </div>
-        <ul class="bullets">
-          <li>Developed a strategic card game with a team of six software engineers, using Apache Maven for build management across the full development lifecycle.</li>
-          <li>Implemented an AI opponent with increasing difficulty levels, demonstrating ability to understand and modify application logic for functional troubleshooting.</li>
-        </ul>
-        <div class="tools">tools — <span>Java</span> · <span>Apache Maven</span></div>
-        <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">write-up available</span>
+        <h3>Duffing Oscillator Simulation</h3>
+        <p>Numerical RK4 simulation of a chaotic oscillator, with Fourier analysis of frequency components.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
-    <!-- PROJECT: Netflix Analysis -->
-    <div class="project">
-      <div class="project-motif">
-        <svg viewBox="0 0 80 60" fill="none">
-          <circle cx="40" cy="30" r="22" stroke="#5FD9C4" stroke-width="1.5"/>
-          <path d="M40 30 L40 8 A22 22 0 0 1 58 42 Z" fill="#5FD9C4" opacity="0.6"/>
-        </svg>
-      </div>
-      <div>
-        <div class="project-title-row">
-          <h3>Netflix Analysis</h3>
-          <span class="status live">write-up available</span>
+      <a class="project-card" href="projects/kelogsdojo.html" onclick="return openModal(event, 5)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <rect x="10" y="8" width="24" height="34" rx="2" stroke="#E8A855" stroke-width="1.5" transform="rotate(-8 22 25)"/>
+            <rect x="30" y="14" width="24" height="34" rx="2" fill="#12141A" stroke="#E8A855" stroke-width="1.5" transform="rotate(6 42 31)"/>
+          </svg>
         </div>
-        <ul class="bullets">
-          <li>Analyzed a dataset of 8,807 Netflix titles (2008–2021) to uncover content trends across genres, countries, and content types; identified a peak in 2019 followed by a COVID-related production slowdown in 2020–2021.</li>
-          <li>Discovered that 69.6% of Netflix's catalog is movies and that TV-MA is the most common content rating with 3,207 titles, communicating findings through targeted visualizations.</li>
-        </ul>
-        <div class="tools">tools — <span>Python</span> · <span>Pandas</span> · <span>Matplotlib</span></div>
-        <div class="project-links">
-          <a href="#" target="_blank" rel="noopener">GitHub repo →</a>
-        </div>
-      </div>
-    </div>
+        <span class="status live">write-up available</span>
+        <h3>KelogsDojo</h3>
+        <p>A strategic card game with an AI opponent, built in Java with a team of six.</p>
+        <span class="view-link">View project →</span>
+      </a>
 
+      <a class="project-card" href="projects/netflix-analysis.html" onclick="return openModal(event, 6)">
+        <div class="card-motif">
+          <svg viewBox="0 0 80 60" fill="none">
+            <circle cx="40" cy="30" r="22" stroke="#5FD9C4" stroke-width="1.5"/>
+            <path d="M40 30 L40 8 A22 22 0 0 1 58 42 Z" fill="#5FD9C4" opacity="0.6"/>
+          </svg>
+        </div>
+        <span class="status live">write-up available</span>
+        <h3>Netflix Analysis</h3>
+        <p>Content trends across 8,807 titles — 69.6% movies, with a 2020–2021 production slowdown.</p>
+        <span class="view-link">View project →</span>
+      </a>
+
+    </div>
   </section>
 
   <section id="skills">
@@ -341,56 +150,29 @@ ORDER BY churn_rate_pct DESC;</pre>
     <div class="skills-grid">
       <div class="skill-block">
         <h4>languages</h4>
-        <ul>
-          <li>Python</li>
-          <li>Java</li>
-          <li>SQL</li>
-          <li>Dr.Racket</li>
-        </ul>
+        <ul><li>Python</li><li>Java</li><li>SQL</li><li>Dr.Racket</li></ul>
       </div>
       <div class="skill-block">
         <h4>libraries &amp; frameworks</h4>
-        <ul>
-          <li>NumPy</li>
-          <li>Pandas</li>
-          <li>Matplotlib</li>
-          <li>SciPy</li>
-        </ul>
+        <ul><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>SciPy</li></ul>
       </div>
       <div class="skill-block">
         <h4>tools &amp; platforms</h4>
-        <ul>
-          <li>GitHub</li>
-          <li>MySQL</li>
-          <li>Arduino</li>
-          <li>Microsoft Azure</li>
-          <li>Jupyter Notebook</li>
-        </ul>
+        <ul><li>GitHub</li><li>MySQL</li><li>Arduino</li><li>Microsoft Azure</li><li>Jupyter Notebook</li></ul>
       </div>
       <div class="skill-block">
         <h4>data skills</h4>
-        <ul>
-          <li>Exploratory Data Analysis</li>
-          <li>Data Cleaning</li>
-          <li>Data Visualization</li>
-          <li>Statistical Analysis</li>
-        </ul>
+        <ul><li>Exploratory Data Analysis</li><li>Data Cleaning</li><li>Data Visualization</li><li>Statistical Analysis</li></ul>
       </div>
       <div class="skill-block">
         <h4>certifications</h4>
-        <ul>
-          <li>Azure AI Fundamentals</li>
-          <li>Azure Fundamentals</li>
-          <li>(WE Accelerate program)</li>
-        </ul>
+        <ul><li>Azure AI Fundamentals</li><li>Azure Fundamentals</li><li>(WE Accelerate program)</li></ul>
       </div>
     </div>
   </section>
 
   <section id="experience">
-    <div class="section-head">
-      <h2>Work Experience</h2>
-    </div>
+    <div class="section-head"><h2>Work Experience</h2></div>
 
     <div class="xp-entry">
       <div class="xp-head">
@@ -422,9 +204,7 @@ ORDER BY churn_rate_pct DESC;</pre>
   </section>
 
   <section id="education">
-    <div class="section-head">
-      <h2>Education</h2>
-    </div>
+    <div class="section-head"><h2>Education</h2></div>
     <div class="edu-entry">
       <div class="edu-head">
         <div>
@@ -452,6 +232,236 @@ ORDER BY churn_rate_pct DESC;</pre>
   </footer>
 
 </div>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕ close</button>
+    <div class="modal-header">
+      <span class="status live" id="modalStatus">live</span>
+      <h2 id="modalTitle">Title</h2>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-nav">
+      <button onclick="stepModal(-1)">← previous</button>
+      <span class="modal-counter" id="modalCounter">1 / 7</span>
+      <button onclick="stepModal(1)">next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PROJECTS = [
+  {
+    title: "Interactive Churn Dashboard",
+    status: "live dashboard",
+    page: "projects/churn-dashboard.html",
+    overview: [
+      "A working interactive dashboard — KPI cards, churn-rate breakdowns by contract and internet type, and a live region filter that recalculates every chart in real time. Built on a 1,000-row practice dataset to demonstrate dashboard design and data modeling end-to-end.",
+      "This is separate from the pandas-based Telco Churn analysis, which uses the full 7,043-customer dataset — this one is purpose-built to pair with the SQL Churn Queries project."
+    ],
+    tools: ["JavaScript", "Chart.js", "HTML/CSS", "Data modeling"],
+    demo: "dashboard.html",
+    links: [
+      { label: "Open full screen", href: "dashboard.html", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" }
+    ]
+  },
+  {
+    title: "SQL Churn Queries",
+    status: "write-up available",
+    page: "projects/sql-churn-queries.html",
+    writeup: [
+      "This project runs six SQL queries against a 1,000-row practice telecom dataset in MySQL — covering aggregation, a join against a lookup table, a subquery, and two window functions — to demonstrate SQL fluency independent of the pandas-based analyses elsewhere in this portfolio.",
+      "The queries surface which customer segments churn most, flag which regions run above a churn-rate target using a joined lookup table, find high-value customers who churned anyway using a subquery, and rank customers by lifetime value within each region using a window function."
+    ],
+    overview: [
+      "A set of MySQL queries against a 1,000-row practice telecom churn dataset — joins, aggregations, a subquery, and two window functions — surfacing which customer segments churn most. This dataset also powers the Interactive Churn Dashboard."
+    ],
+    bullets: [
+      "Month-to-month customers churn at 51.9%, versus 16.7% for two-year contracts.",
+      "Fiber-optic customers churn more than DSL customers in every region, despite similar pricing.",
+      "All four regions run above a 30% churn-rate target, with North highest at 40.1%."
+    ],
+    tools: ["MySQL", "Joins", "Window functions", "Subqueries"],
+    code: `SELECT contract_type,
+       COUNT(*) AS total_customers,
+       ROUND(100.0 * SUM(CASE WHEN churn='Yes' THEN 1 ELSE 0 END)
+             / COUNT(*), 1) AS churn_rate_pct
+FROM customers
+GROUP BY contract_type
+ORDER BY churn_rate_pct DESC;`,
+    links: [
+      { label: "View live dashboard", href: "projects/churn-dashboard.html", primary: true },
+      { label: "Full write-up", href: "sql-project/README.md" },
+      { label: "All queries", href: "sql-project/churn_queries.sql" },
+      { label: "Dataset", href: "sql-project/customers.csv" },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" }
+    ]
+  },
+  {
+    title: "Telco Customer Churn Analysis",
+    status: "live dashboard",
+    page: "projects/telco-churn.html",
+    writeup: [
+      "This project used the IBM/Kaggle Telco Customer Churn dataset — 7,043 customers with contract, internet service, tenure, billing, and demographic fields — to find where churn concentrates and why.",
+      "Contract length was the strongest predictor: month-to-month churns at 42.7% vs 2.8% for two-year contracts. Internet type mattered too — fiber-optic customers churn at 41.9%, more than double DSL's 19.0%. Electronic check payers churn highest of any payment method at 45.3%.",
+      "Tenure told the same story: churned customers averaged 18.0 months before leaving, versus 37.6 months for retained customers — the first year is the highest-risk window."
+    ],
+    bullets: [
+      "Analyzed churn patterns across 7,043 telecom customers to identify root causes and at-risk segments; found month-to-month contracts churn at 42.7%, over 15x the rate of two-year contracts.",
+      "Communicated findings through clear visualizations and written summaries, conveying actionable insights to non-technical audiences."
+    ],
+    tools: ["Python", "Pandas", "Matplotlib"],
+    demo: "telco-dashboard.html",
+    links: [
+      { label: "Open full screen", href: "telco-dashboard.html", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "Dataset", href: "datasets/telco-churn.csv" }
+    ]
+  },
+  {
+    title: "Superstore Sales Analysis",
+    status: "live dashboard",
+    page: "projects/superstore-sales.html",
+    writeup: [
+      "This project used the Sample Superstore dataset — 9,994 order line items across Furniture, Office Supplies, and Technology (2014–2017) — to find where the business makes and loses money.",
+      "Overall: $2.30M in sales at a 12.5% margin ($286K profit). But Furniture as a category is barely profitable, dragged down by Tables (-$17.7K) and Bookcases (-$3.5K) — both sell in volume but lose money on every unit. Copiers ($55.6K), Phones ($44.5K), and Accessories ($41.9K) were the strongest sub-categories, all in Technology."
+    ],
+    bullets: [
+      "Performed end-to-end exploratory data analysis on 9,994 retail transactions spanning 4 years; uncovered that Tables and Bookcases were loss-making despite high sales volume.",
+      "Built 5 visualizations including monthly sales trend lines and regional bar charts; identified the West region as top revenue generator ($725K) and Technology as most profitable category ($145K profit)."
+    ],
+    tools: ["Python", "Pandas", "Matplotlib"],
+    demo: "superstore-dashboard.html",
+    links: [
+      { label: "Open full screen", href: "superstore-dashboard.html", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "Dataset", href: "datasets/superstore.csv" }
+    ]
+  },
+  {
+    title: "Duffing Oscillator Simulation",
+    status: "write-up available",
+    page: "projects/duffing-oscillator.html",
+    writeup: [
+      "The Duffing oscillator is a nonlinear differential equation modeling systems with a restoring force that isn't proportional to displacement — like a stiffening spring or driven pendulum. It can produce chaotic behavior where small changes in initial conditions send the system down wildly different trajectories.",
+      "Since it has no general closed-form solution, this project solved it numerically with the fourth-order Runge-Kutta method (RK4), then applied a Discrete Fourier Transform to reveal which oscillation frequencies dominate as the driving force shifts from periodic into chaotic regimes."
+    ],
+    bullets: [
+      "Implemented a numerical solution using the fourth-order Runge-Kutta method, demonstrating ability to reason through and debug complex algorithmic logic.",
+      "Applied Discrete Fourier Transform (DFT) to study frequency components; developed scripts utilizing NumPy, SciPy, and Matplotlib for efficient computation and analysis."
+    ],
+    tools: ["Python", "Jupyter Notebook", "NumPy", "SciPy"],
+    links: [
+      { label: "View on GitHub", href: "https://github.com/Om-M67", primary: true }
+    ]
+  },
+  {
+    title: "KelogsDojo",
+    status: "write-up available",
+    page: "projects/kelogsdojo.html",
+    writeup: [
+      "A team project (six engineers) building a strategic card game in Java — game rules, turn logic, and an AI opponent — using Apache Maven to manage the build consistently across everyone's machines.",
+      "My focus was the AI opponent: building difficulty tiers that required understanding the existing game logic well enough to modify its decision-making without breaking rule enforcement elsewhere — the kind of multi-contributor codebase work that translates directly to functional troubleshooting."
+    ],
+    bullets: [
+      "Developed a strategic card game with a team of six software engineers, using Apache Maven for build management across the full development lifecycle.",
+      "Implemented an AI opponent with increasing difficulty levels, demonstrating ability to understand and modify application logic for functional troubleshooting."
+    ],
+    tools: ["Java", "Apache Maven"],
+    links: [
+      { label: "View on GitHub", href: "https://github.com/Om-M67", primary: true }
+    ]
+  },
+  {
+    title: "Netflix Analysis",
+    status: "live dashboard",
+    page: "projects/netflix-analysis.html",
+    writeup: [
+      "This project used the Netflix Movies and TV Shows dataset (as of 2021) — 8,807 titles with type, country, rating, and date-added metadata — to trace how the catalog grew and shifted over time.",
+      "Movies dominate at 69.6%, and TV-MA is the most common rating (3,207 titles). The US supplies the most titles (3,211), followed by India (1,008) and the UK (628). Titles-added peaked in 2019 at 2,016, then fell in 2020 and 2021 — consistent with COVID-19 disrupting production industry-wide."
+    ],
+    bullets: [
+      "Analyzed a dataset of 8,807 Netflix titles (2008–2021) to uncover content trends across genres, countries, and content types; identified a peak in 2019 followed by a COVID-related production slowdown in 2020–2021.",
+      "Discovered that 69.6% of Netflix's catalog is movies and that TV-MA is the most common content rating with 3,207 titles, communicating findings through targeted visualizations."
+    ],
+    tools: ["Python", "Pandas", "Matplotlib"],
+    demo: "netflix-dashboard.html",
+    links: [
+      { label: "Open full screen", href: "netflix-dashboard.html", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "Dataset", href: "datasets/netflix-titles.csv" }
+    ]
+  }
+];
+
+let currentIndex = 0;
+
+function renderModal(i) {
+  const p = PROJECTS[i];
+  document.getElementById('modalStatus').textContent = p.status;
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalCounter').textContent = `${i + 1} / ${PROJECTS.length}`;
+
+  let html = '';
+  if (p.overview) {
+    html += '<h3>Overview</h3>';
+    p.overview.forEach(para => html += `<p>${para}</p>`);
+  }
+  if (p.bullets) {
+    if (!p.overview) html += '<h3>Overview</h3>';
+    html += '<ul class="bullets">' + p.bullets.map(b => `<li>${b}</li>`).join('') + '</ul>';
+  }
+  if (p.writeup) {
+    html += '<h3>Write-up</h3>';
+    p.writeup.forEach(para => html += `<p>${para}</p>`);
+  }
+  if (p.tools) {
+    html += '<h3>Tools</h3><div class="modal-tools">' + p.tools.map(t => `<span>${t}</span>`).join('') + '</div>';
+  }
+  if (p.code) {
+    html += `<h3>Example query</h3><pre class="modal-code">${p.code}</pre>`;
+  }
+  if (p.demo) {
+    html += `<h3>Live demo</h3><div class="modal-demo-frame"><iframe src="${p.demo}" title="${p.title}"></iframe></div>`;
+  }
+  if (p.links) {
+    html += '<h3>Links</h3><div class="modal-links">' + p.links.map(l =>
+      `<a href="${l.href}" target="_blank" rel="noopener"${l.primary ? ' class="primary"' : ''}>${l.label} →</a>`
+    ).join('') + '</div>';
+  }
+
+  document.getElementById('modalBody').innerHTML = html;
+}
+
+function openModal(event, i) {
+  event.preventDefault();
+  currentIndex = i;
+  renderModal(currentIndex);
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  return false;
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function stepModal(dir) {
+  currentIndex = (currentIndex + dir + PROJECTS.length) % PROJECTS.length;
+  renderModal(currentIndex);
+}
+
+document.addEventListener('keydown', (e) => {
+  const overlay = document.getElementById('modalOverlay');
+  if (!overlay.classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowRight') stepModal(1);
+  if (e.key === 'ArrowLeft') stepModal(-1);
+});
+</script>
 
 </body>
 </html>

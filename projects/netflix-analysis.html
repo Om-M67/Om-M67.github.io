@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Analysis — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="project-page-header">
+    <a class="back-link" href="../index.html">← back to portfolio</a>
+    <h1>Netflix Analysis</h1>
+    <span class="status live">write-up available</span>
+  </div>
+
+  <div class="detail-section">
+    <h2>Overview</h2>
+    <ul class="bullets">
+      <li>Analyzed a dataset of 8,807 Netflix titles (2008–2021) to uncover content trends across genres, countries, and content types; identified a peak in 2019 followed by a COVID-related production slowdown in 2020–2021.</li>
+      <li>Discovered that 69.6% of Netflix's catalog is movies and that TV-MA is the most common content rating with 3,207 titles, communicating findings through targeted visualizations.</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>Write-up</h2>
+    <p>
+      This project used the Netflix Movies and TV Shows dataset (as of 2021) — 8,807 titles with type, country,
+      rating, and date-added metadata — to trace how the catalog grew and shifted over time.
+    </p>
+    <p>
+      Movies dominate the catalog at 69.6% versus TV shows, and TV-MA is by far the most common content rating
+      at 3,207 titles — signaling a catalog skewed toward mature-audience content. The United States supplies
+      the largest share of titles (3,211), followed by India (1,008) and the United Kingdom (628), reflecting
+      Netflix's biggest production and licensing markets.
+    </p>
+    <p>
+      Titles-added-per-year peaked in 2019 at 2,016 new titles, then dropped to 1,879 in 2020 (a 6.8% decline)
+      and continued falling to 1,498 in 2021 — consistent with COVID-19 production shutdowns disrupting new
+      content pipelines industry-wide, rather than any single decision by Netflix.
+    </p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools</h2>
+    <div class="tools-row">
+      <span class="tool-pill">Python</span>
+      <span class="tool-pill">Pandas</span>
+      <span class="tool-pill">Matplotlib</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Live demo</h2>
+    <div class="demo-frame">
+      <iframe src="../netflix-dashboard.html" title="Netflix Analysis Dashboard"></iframe>
+    </div>
+    <div class="demo-link-row">
+      <div class="action-links">
+        <a class="primary" href="../netflix-dashboard.html" target="_blank" rel="noopener">Open full screen →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Links</h2>
+    <div class="action-links">
+      <a href="https://github.com/Om-M67" target="_blank" rel="noopener">View on GitHub →</a>
+      <a href="../datasets/netflix-titles.csv" target="_blank" rel="noopener">Dataset →</a>
+    </div>
+  </div>
+
+
+  <div class="project-nav">
+    <a class="prev" href="kelogsdojo.html">
+      <span class="nav-label">← previous</span>
+      <span class="nav-title">KelogsDojo</span>
+    </a>
+    <a class="next" href="churn-dashboard.html">
+      <span class="nav-label">next →</span>
+      <span class="nav-title">Interactive Churn Dashboard</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

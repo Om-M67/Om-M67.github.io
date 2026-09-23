@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duffing Oscillator Simulation — Om Mistry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="project-page-header">
+    <a class="back-link" href="../index.html">← back to portfolio</a>
+    <h1>Duffing Oscillator Simulation and Fourier Analysis</h1>
+    <span class="status live">write-up available</span>
+  </div>
+
+  <div class="detail-section">
+    <h2>Overview</h2>
+    <ul class="bullets">
+      <li>Implemented a numerical solution using the fourth-order Runge-Kutta method, demonstrating ability to reason through and debug complex algorithmic logic.</li>
+      <li>Applied Discrete Fourier Transform (DFT) to study frequency components; developed scripts utilizing NumPy, SciPy, and Matplotlib for efficient computation and analysis.</li>
+    </ul>
+  </div>
+
+  <div class="detail-section">
+    <h2>Write-up</h2>
+    <p>
+      The Duffing oscillator is a classic nonlinear differential equation used to model systems with a
+      restoring force that isn't simply proportional to displacement — think a stiffening spring, a driven
+      pendulum, or certain electrical circuits. Unlike a simple harmonic oscillator, the Duffing equation can
+      produce chaotic behavior: small changes in initial conditions or driving parameters can send the system
+      down wildly different trajectories over time.
+    </p>
+    <p>
+      Since the equation has no general closed-form solution, this project solved it numerically using the
+      fourth-order Runge-Kutta method (RK4) — a standard technique for integrating ordinary differential
+      equations that balances accuracy against computational cost by sampling the system's rate of change at
+      four points within each time step rather than just one.
+    </p>
+    <p>
+      With the time-domain solution in hand, a Discrete Fourier Transform was applied to shift the signal into
+      the frequency domain — revealing which oscillation frequencies dominate the motion and how that spectrum
+      changes as the driving force is tuned from periodic into chaotic regimes. This combination (numerical
+      integration + frequency analysis) is a common toolkit in computational physics for studying nonlinear
+      dynamical systems more broadly, beyond just this one equation.
+    </p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools</h2>
+    <div class="tools-row">
+      <span class="tool-pill">Python</span>
+      <span class="tool-pill">Jupyter Notebook</span>
+      <span class="tool-pill">NumPy</span>
+      <span class="tool-pill">SciPy</span>
+      <span class="tool-pill">Matplotlib</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>Links</h2>
+    <div class="action-links">
+      <a href="https://github.com/Om-M67" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </div>
+
+
+  <div class="project-nav">
+    <a class="prev" href="superstore-sales.html">
+      <span class="nav-label">← previous</span>
+      <span class="nav-title">Superstore Sales Analysis</span>
+    </a>
+    <a class="next" href="kelogsdojo.html">
+      <span class="nav-label">next →</span>
+      <span class="nav-title">KelogsDojo</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
