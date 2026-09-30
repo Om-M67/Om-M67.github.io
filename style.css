@@ -110,7 +110,7 @@ section { padding: 64px 0; border-bottom: 1px solid var(--panel-line); }
   overflow: hidden;
   background: var(--panel);
 }
-.demo-frame iframe { width: 100%; height: 640px; border: none; display: block; }
+.demo-frame iframe { width: 100%; height: 100%; border: none; display: block; }
 .demo-link-row { margin-top: 16px; }
 
 pre.code-frame {
