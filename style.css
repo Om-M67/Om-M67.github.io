@@ -159,7 +159,7 @@ pre.code-frame {
   color: var(--text);
   background: var(--panel);
   transition: border-color 0.15s, transform 0.15s;
-  max-width: 46%;
+  max-width: 50%;
 }
 .project-nav a:hover { border-color: var(--accent); transform: translateY(-2px); }
 .project-nav a.next { text-align: right; align-items: flex-end; }
