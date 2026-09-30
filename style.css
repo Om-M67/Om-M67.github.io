@@ -361,7 +361,7 @@ pre.modal-code {
 */
 
 /* ---------- DASHBOARD-APP LAYOUT ---------- */
-.app-shell { max-width: 1120px; margin: 0 auto; padding: 40px 24px 24px; }
+.app-shell { max-width: none; margin: 0 auto; padding: 40px 24px 24px; }
 
 .top-row {
   display: grid;
