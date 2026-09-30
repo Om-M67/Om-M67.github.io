@@ -10,244 +10,70 @@
 </head>
 <body>
 
-<div class="wrap">
+<div class="app-shell">
 
-  <header class="hero">
-    <div class="hero-grid">
-      <div>
-        <div class="kicker">// om mistry — data & technical roles</div>
-        <h1>Physics graduate, now building with data.</h1>
-        <p class="hero-sub">
-          Physics graduate with experience in analytical problem-solving, Python programming, and cloud
-          technologies. Azure AI and Azure Fundamentals certified. Skilled at diagnosing complex issues,
-          communicating technical findings clearly, and collaborating across teams.
-        </p>
-        <div class="hero-location">Toronto, ON, Canada</div>
+  <div class="top-row">
+    <div class="top-card intro-card">
+      <div class="kicker">// om mistry — data &amp; technical roles</div>
+      <h1>Physics graduate, now building with data.</h1>
+      <p>Toronto, ON. Azure AI &amp; Azure Fundamentals certified. Eager to apply technical and investigative skills in a data-driven role.</p>
+      <div class="intro-links">
+        <a class="gh" href="https://github.com/Om-M67" target="_blank" rel="noopener">github.com/Om-M67 ↗</a>
+        <a href="https://linkedin.com/in/om-mistry67" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <div class="hero-links">
+    </div>
+
+    <div class="top-card skills-card">
+      <h2>Technical Skills</h2>
+      <div class="skills-groups">
+        <div>
+          <h4>languages</h4>
+          <div class="pill-row"><span>Python</span><span>Java</span><span>SQL</span><span>Dr.Racket</span></div>
+        </div>
+        <div>
+          <h4>libraries</h4>
+          <div class="pill-row"><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>SciPy</span></div>
+        </div>
+        <div>
+          <h4>tools</h4>
+          <div class="pill-row"><span>GitHub</span><span>MySQL</span><span>Azure</span><span>Jupyter</span></div>
+        </div>
+        <div>
+          <h4>certifications</h4>
+          <div class="pill-row"><span>Azure AI</span><span>Azure Fundamentals</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-card contact-card">
+      <h2>Contact</h2>
+      <div class="contact-list">
         <a href="mailto:om.mistry567@gmail.com">om.mistry567@gmail.com</a>
         <a href="tel:+19056087729">(905) 608-7729</a>
-        <a href="https://github.com/Om-M67" target="_blank" rel="noopener">github.com/Om-M67</a>
-        <a href="https://linkedin.com/in/om-mistry67" target="_blank" rel="noopener">linkedin.com/in/om-mistry67</a>
-        <a class="resume-link" href="resume.pdf" target="_blank" rel="noopener">Download resume ↓</a>
+        <a class="resume-btn" href="resume.pdf" target="_blank" rel="noopener">Download resume ↓</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <section id="projects">
-    <div class="section-head">
-      <h2>Projects</h2>
-      <span class="count">07 total</span>
+  <div class="main-row">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-label">Projects</div>
+      <!-- sidebar items injected by JS -->
     </div>
 
-    <div class="project-grid">
-
-      <a class="project-card" href="projects/churn-dashboard.html" onclick="return openModal(event, 0)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <rect x="4" y="34" width="10" height="20" fill="#E8A855" opacity="0.5"/>
-            <rect x="18" y="20" width="10" height="34" fill="#E8A855" opacity="0.7"/>
-            <rect x="32" y="8" width="10" height="46" fill="#E8A855"/>
-            <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <span class="status live">live dashboard</span>
-        <h3>Interactive Churn Dashboard</h3>
-        <p>KPI cards, churn breakdowns, and a live region filter built on a practice telecom dataset.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/sql-churn-queries.html" onclick="return openModal(event, 1)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <rect x="6" y="6" width="68" height="48" rx="2" stroke="#5FD9C4" stroke-width="1.5"/>
-            <line x1="6" y1="20" x2="74" y2="20" stroke="#5FD9C4" stroke-width="1.5"/>
-            <line x1="24" y1="20" x2="24" y2="54" stroke="#262B36" stroke-width="1.5"/>
-            <line x1="14" y1="30" x2="30" y2="30" stroke="#8890A0" stroke-width="1.5"/>
-            <line x1="14" y1="38" x2="26" y2="38" stroke="#8890A0" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>SQL Churn Queries</h3>
-        <p>MySQL joins, aggregations, a subquery, and window functions against a churn dataset.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/telco-churn.html" onclick="return openModal(event, 2)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <polyline points="4,46 18,40 32,44 46,22 60,28 76,10" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
-            <circle cx="76" cy="10" r="3" fill="#5FD9C4"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>Telco Customer Churn Analysis</h3>
-        <p>Churn patterns across 7,043 telecom customers — month-to-month churns 15x more than 2-year contracts.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/superstore-sales.html" onclick="return openModal(event, 3)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <rect x="4" y="34" width="10" height="20" fill="#5FD9C4" opacity="0.5"/>
-            <rect x="18" y="14" width="10" height="40" fill="#5FD9C4" opacity="0.8"/>
-            <rect x="32" y="26" width="10" height="28" fill="#5FD9C4" opacity="0.5"/>
-            <rect x="46" y="6" width="10" height="48" fill="#5FD9C4"/>
-            <line x1="0" y1="56" x2="80" y2="56" stroke="#262B36" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>Superstore Sales Analysis</h3>
-        <p>EDA across 9,994 retail transactions — West region leads revenue at $725K.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/duffing-oscillator.html" onclick="return openModal(event, 4)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <path d="M2 30 Q 12 6, 22 30 T 42 30 Q 52 54, 62 30 T 78 30" stroke="#5FD9C4" stroke-width="1.8" fill="none"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>Duffing Oscillator Simulation</h3>
-        <p>Numerical RK4 simulation of a chaotic oscillator, with Fourier analysis of frequency components.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/kelogsdojo.html" onclick="return openModal(event, 5)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <rect x="10" y="8" width="24" height="34" rx="2" stroke="#E8A855" stroke-width="1.5" transform="rotate(-8 22 25)"/>
-            <rect x="30" y="14" width="24" height="34" rx="2" fill="#12141A" stroke="#E8A855" stroke-width="1.5" transform="rotate(6 42 31)"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>KelogsDojo</h3>
-        <p>A strategic card game with an AI opponent, built in Java with a team of six.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
-      <a class="project-card" href="projects/netflix-analysis.html" onclick="return openModal(event, 6)">
-        <div class="card-motif">
-          <svg viewBox="0 0 80 60" fill="none">
-            <circle cx="40" cy="30" r="22" stroke="#5FD9C4" stroke-width="1.5"/>
-            <path d="M40 30 L40 8 A22 22 0 0 1 58 42 Z" fill="#5FD9C4" opacity="0.6"/>
-          </svg>
-        </div>
-        <span class="status live">write-up available</span>
-        <h3>Netflix Analysis</h3>
-        <p>Content trends across 8,807 titles — 69.6% movies, with a 2020–2021 production slowdown.</p>
-        <span class="view-link">View project →</span>
-      </a>
-
+    <div class="main-panel">
+      <div class="panel-header">
+        <span class="status live" id="panelStatus">live</span>
+        <h2 id="panelTitle">Title</h2>
+      </div>
+      <div class="panel-body" id="panelBody"></div>
     </div>
-  </section>
-
-  <section id="skills">
-    <div class="section-head">
-      <h2>Technical Skills</h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-block">
-        <h4>languages</h4>
-        <ul><li>Python</li><li>Java</li><li>SQL</li><li>Dr.Racket</li></ul>
-      </div>
-      <div class="skill-block">
-        <h4>libraries &amp; frameworks</h4>
-        <ul><li>NumPy</li><li>Pandas</li><li>Matplotlib</li><li>SciPy</li></ul>
-      </div>
-      <div class="skill-block">
-        <h4>tools &amp; platforms</h4>
-        <ul><li>GitHub</li><li>MySQL</li><li>Arduino</li><li>Microsoft Azure</li><li>Jupyter Notebook</li></ul>
-      </div>
-      <div class="skill-block">
-        <h4>data skills</h4>
-        <ul><li>Exploratory Data Analysis</li><li>Data Cleaning</li><li>Data Visualization</li><li>Statistical Analysis</li></ul>
-      </div>
-      <div class="skill-block">
-        <h4>certifications</h4>
-        <ul><li>Azure AI Fundamentals</li><li>Azure Fundamentals</li><li>(WE Accelerate program)</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="section-head"><h2>Work Experience</h2></div>
-
-    <div class="xp-entry">
-      <div class="xp-head">
-        <div>
-          <h3>Skills Training and Project Work</h3>
-          <div class="xp-place">Waterloo Experience (WE) Accelerate — Toronto, Ontario</div>
-        </div>
-        <div class="xp-date">Sept 2023 – Dec 2023</div>
-      </div>
-      <ul>
-        <li>Successfully completed the WE Accelerate program, earning certifications in Azure AI and Azure Fundamentals.</li>
-        <li>Utilized Azure tools to design a proposed solution for an AI-operated online financial advisor.</li>
-      </ul>
-    </div>
-
-    <div class="xp-entry">
-      <div class="xp-head">
-        <div>
-          <h3>Swimming Instructor &amp; Lifeguard</h3>
-          <div class="xp-place">Cassie Campbell Community Centre — Brampton, Ontario</div>
-        </div>
-        <div class="xp-date">Sept 2018 – March 2020</div>
-      </div>
-      <ul>
-        <li>Instructed children and adults across all skill levels in water safety and swimming, demonstrating clear communication and adaptability with diverse groups.</li>
-        <li>Completed cross-functional training with aquatics staff across Brampton; volunteered 100+ hours and held Standard First Aid with CPR-C certification.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="section-head"><h2>Education</h2></div>
-    <div class="edu-entry">
-      <div class="edu-head">
-        <div>
-          <h3>Bachelor of Science in Physics</h3>
-          <div class="edu-place">University of Waterloo — Waterloo, Ontario</div>
-        </div>
-        <div class="edu-date">Sept 2020 – Apr 2025</div>
-      </div>
-      <p>Relevant courses: Advanced Computational Physics, Quantum Physics II, Differential Equations, Probability, Statistics and Data Analysis for Physics, Intermediate Classical Mechanics, Stars and Planets.</p>
-    </div>
-  </section>
+  </div>
 
   <footer>
-    <div class="foot-grid">
-      <h2>Let's talk about a role.</h2>
-      <div class="foot-links">
-        <a href="mailto:om.mistry567@gmail.com">Email</a>
-        <a href="tel:+19056087729">Phone</a>
-        <a href="https://github.com/Om-M67" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/om-mistry67" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </div>
     <div class="fine-print">last updated — fill in date on each project push</div>
   </footer>
 
-</div>
-
-<!-- PROJECT MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕ close</button>
-    <div class="modal-header">
-      <span class="status live" id="modalStatus">live</span>
-      <h2 id="modalTitle">Title</h2>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-nav">
-      <button onclick="stepModal(-1)">← previous</button>
-      <span class="modal-counter" id="modalCounter">1 / 7</span>
-      <button onclick="stepModal(1)">next →</button>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -262,6 +88,7 @@ const PROJECTS = [
     ],
     tools: ["JavaScript", "Chart.js", "HTML/CSS", "Data modeling"],
     demo: "dashboard.html",
+    demoCaption: "Switch regions with the filter — churn rate and average monthly charge move together, with month-to-month and fiber-optic customers consistently showing the highest risk.",
     links: [
       { label: "Open full screen", href: "dashboard.html", primary: true },
       { label: "View on GitHub", href: "https://github.com/Om-M67" }
@@ -314,9 +141,10 @@ ORDER BY churn_rate_pct DESC;`,
     ],
     tools: ["Python", "Pandas", "Matplotlib"],
     demo: "telco-dashboard.html",
+    demoCaption: "Filtering by internet service shows fiber customers churning at roughly double the rate of DSL, even as contract type remains the single strongest driver in the bar chart.",
     links: [
       { label: "Open full screen", href: "telco-dashboard.html", primary: true },
-      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Churn-Analysis" },
       { label: "Dataset", href: "datasets/telco-churn.csv" }
     ]
   },
@@ -334,9 +162,10 @@ ORDER BY churn_rate_pct DESC;`,
     ],
     tools: ["Python", "Pandas", "Matplotlib"],
     demo: "superstore-dashboard.html",
+    demoCaption: "Filtering by region shows West and East driving most of the profit, while the sub-category chart makes Tables and Bookcases' losses visible even when the overall Furniture category looks fine.",
     links: [
       { label: "Open full screen", href: "superstore-dashboard.html", primary: true },
-      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Sales-Analysis" },
       { label: "Dataset", href: "datasets/superstore.csv" }
     ]
   },
@@ -354,7 +183,7 @@ ORDER BY churn_rate_pct DESC;`,
     ],
     tools: ["Python", "Jupyter Notebook", "NumPy", "SciPy"],
     links: [
-      { label: "View on GitHub", href: "https://github.com/Om-M67", primary: true }
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Duffing-Oscillator", primary: true }
     ]
   },
   {
@@ -388,21 +217,77 @@ ORDER BY churn_rate_pct DESC;`,
     ],
     tools: ["Python", "Pandas", "Matplotlib"],
     demo: "netflix-dashboard.html",
+    demoCaption: "Filtering to TV Shows alone skews ratings even further toward TV-MA and TV-14, and the year chart makes the 2019 content peak and the pandemic-era slowdown clearly visible.",
     links: [
       { label: "Open full screen", href: "netflix-dashboard.html", primary: true },
-      { label: "View on GitHub", href: "https://github.com/Om-M67" },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Netflix-Analysis" },
       { label: "Dataset", href: "datasets/netflix-titles.csv" }
+    ]
+  },
+  {
+    title: "Casino Royale Blackjack",
+    status: "live demo",
+    page: "projects/blackjack.html",
+    overview: [
+      "A full-featured Blackjack game built five different ways from the same core logic — a Python desktop app (Pygame), a multiplayer Discord bot, a local WebSocket multiplayer web app, a standalone single-file HTML version, and a hosted React web app supporting up to 6 players at once."
+    ],
+    bullets: [
+      "Implements real-time Basic Strategy recommendations (\"the Book\") on every turn — the mathematically optimal move based on hand total, dealer's upcard, and double/split availability, which reduces the house edge to roughly 0.5%.",
+      "Runs a live Monte Carlo simulation (300+ runs per move) after every card to estimate real-time win/push/lose probability, sharpening as more cards are dealt.",
+      "Handles the full rule set correctly: soft hands and Ace logic, double down, and a 2.5x natural blackjack payout, with a persistent chip balance across rounds."
+    ],
+    tools: ["Python", "Pygame", "discord.py", "WebSockets", "React"],
+    links: [
+      { label: "Play live game", href: "https://blackjack--omm67.replit.app/", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Book-based-Blackjack" }
+    ]
+  },
+  {
+    title: "Discord Schedule Bot",
+    status: "write-up available",
+    page: "projects/discord-bot.html",
+    overview: [
+      "A Discord bot that solves the everyday problem of a group trying to agree on a time to hang out or game — instead of a back-and-forth chat thread, it turns scheduling into a one-click poll."
+    ],
+    bullets: [
+      "The organizer runs /schedule with an event name and a few candidate times; the bot posts a button per time slot and everyone clicks the ones that work for them.",
+      "Running /lockin tallies the votes, picks the slot with the most support (ties go to the earliest time), and announces the winner — then automatically pings everyone who voted for it when that time arrives.",
+      "Built to run continuously on a free hosting service (Railway) rather than requiring someone's laptop to stay on, with the bot token kept out of the codebase via environment variables."
+    ],
+    tools: ["Python", "discord.py"],
+    links: [
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Discord-Bot", primary: true }
     ]
   }
 ];
 
+
 let currentIndex = 0;
 
-function renderModal(i) {
+function renderSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const label = sidebar.querySelector('.sidebar-label');
+  sidebar.innerHTML = '';
+  sidebar.appendChild(label);
+  PROJECTS.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sidebar-item' + (i === currentIndex ? ' active' : '');
+    btn.innerHTML = p.title + '<span class="si-status">' + p.status + '</span>';
+    btn.onclick = () => selectProject(i);
+    sidebar.appendChild(btn);
+  });
+}
+
+function selectProject(i) {
+  currentIndex = i;
+  renderSidebar();
+  renderPanel(i);
+}
+
+function renderPanel(i) {
   const p = PROJECTS[i];
-  document.getElementById('modalStatus').textContent = p.status;
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalCounter').textContent = `${i + 1} / ${PROJECTS.length}`;
+  document.getElementById('panelStatus').textContent = p.status;
+  document.getElementById('panelTitle').textContent = p.title;
 
   let html = '';
   if (p.overview) {
@@ -418,49 +303,28 @@ function renderModal(i) {
     p.writeup.forEach(para => html += `<p>${para}</p>`);
   }
   if (p.tools) {
-    html += '<h3>Tools</h3><div class="modal-tools">' + p.tools.map(t => `<span>${t}</span>`).join('') + '</div>';
+    html += '<h3>Tools</h3><div class="panel-tools">' + p.tools.map(t => `<span>${t}</span>`).join('') + '</div>';
   }
   if (p.code) {
-    html += `<h3>Example query</h3><pre class="modal-code">${p.code}</pre>`;
+    html += `<h3>Example query</h3><pre class="panel-code">${p.code}</pre>`;
   }
   if (p.demo) {
-    html += `<h3>Live demo</h3><div class="modal-demo-frame"><iframe src="${p.demo}" title="${p.title}"></iframe></div>`;
+    html += `<h3>Live demo</h3><div class="panel-demo-frame"><iframe src="${p.demo}" title="${p.title}"></iframe></div>`;
+    if (p.demoCaption) {
+      html += `<p class="demo-caption">${p.demoCaption}</p>`;
+    }
   }
   if (p.links) {
-    html += '<h3>Links</h3><div class="modal-links">' + p.links.map(l =>
+    html += '<h3>Links</h3><div class="panel-links">' + p.links.map(l =>
       `<a href="${l.href}" target="_blank" rel="noopener"${l.primary ? ' class="primary"' : ''}>${l.label} →</a>`
     ).join('') + '</div>';
   }
 
-  document.getElementById('modalBody').innerHTML = html;
+  document.getElementById('panelBody').innerHTML = html;
 }
 
-function openModal(event, i) {
-  event.preventDefault();
-  currentIndex = i;
-  renderModal(currentIndex);
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  return false;
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function stepModal(dir) {
-  currentIndex = (currentIndex + dir + PROJECTS.length) % PROJECTS.length;
-  renderModal(currentIndex);
-}
-
-document.addEventListener('keydown', (e) => {
-  const overlay = document.getElementById('modalOverlay');
-  if (!overlay.classList.contains('open')) return;
-  if (e.key === 'Escape') closeModal();
-  if (e.key === 'ArrowRight') stepModal(1);
-  if (e.key === 'ArrowLeft') stepModal(-1);
-});
+renderSidebar();
+renderPanel(0);
 </script>
 
 </body>
