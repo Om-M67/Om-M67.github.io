@@ -16,7 +16,7 @@
     <div class="top-card intro-card">
       <div class="kicker">// om mistry — data &amp; technical roles</div>
       <h1>Physics graduate, now building with data.</h1>
-      <p>physics graduate with experience in analytical problem-solving, Python programming, and cloud technologies. Azure AI and Azure Fundamentals certified. Skilled at diagnosing complex issues, communicating technical findings clearly, and collaborating across teams.</p>
+      <p>Toronto, ON. Azure AI &amp; Azure Fundamentals certified. Eager to apply technical and investigative skills in a data-driven role.</p>
       <div class="intro-links">
         <a class="gh" href="https://github.com/Om-M67" target="_blank" rel="noopener">github.com/Om-M67 ↗</a>
         <a href="https://linkedin.com/in/om-mistry67" target="_blank" rel="noopener">LinkedIn</a>
@@ -95,38 +95,6 @@ const PROJECTS = [
     ]
   },
   {
-    title: "SQL Churn Queries",
-    status: "write-up available",
-    page: "projects/sql-churn-queries.html",
-    writeup: [
-      "This project runs six SQL queries against a 1,000-row practice telecom dataset in MySQL — covering aggregation, a join against a lookup table, a subquery, and two window functions — to demonstrate SQL fluency independent of the pandas-based analyses elsewhere in this portfolio.",
-      "The queries surface which customer segments churn most, flag which regions run above a churn-rate target using a joined lookup table, find high-value customers who churned anyway using a subquery, and rank customers by lifetime value within each region using a window function."
-    ],
-    overview: [
-      "A set of MySQL queries against a 1,000-row practice telecom churn dataset — joins, aggregations, a subquery, and two window functions — surfacing which customer segments churn most. This dataset also powers the Interactive Churn Dashboard."
-    ],
-    bullets: [
-      "Month-to-month customers churn at 51.9%, versus 16.7% for two-year contracts.",
-      "Fiber-optic customers churn more than DSL customers in every region, despite similar pricing.",
-      "All four regions run above a 30% churn-rate target, with North highest at 40.1%."
-    ],
-    tools: ["MySQL", "Joins", "Window functions", "Subqueries"],
-    code: `SELECT contract_type,
-       COUNT(*) AS total_customers,
-       ROUND(100.0 * SUM(CASE WHEN churn='Yes' THEN 1 ELSE 0 END)
-             / COUNT(*), 1) AS churn_rate_pct
-FROM customers
-GROUP BY contract_type
-ORDER BY churn_rate_pct DESC;`,
-    links: [
-      { label: "View live dashboard", href: "projects/churn-dashboard.html", primary: true },
-      { label: "Full write-up", href: "sql-project/README.md" },
-      { label: "All queries", href: "sql-project/churn_queries.sql" },
-      { label: "Dataset", href: "sql-project/customers.csv" },
-      { label: "View on GitHub", href: "https://github.com/Om-M67" }
-    ]
-  },
-  {
     title: "Telco Customer Churn Analysis",
     status: "live dashboard",
     page: "projects/telco-churn.html",
@@ -170,6 +138,59 @@ ORDER BY churn_rate_pct DESC;`,
     ]
   },
   {
+    title: "Netflix Analysis",
+    status: "live dashboard",
+    page: "projects/netflix-analysis.html",
+    writeup: [
+      "This project used the Netflix Movies and TV Shows dataset (as of 2021) — 8,807 titles with type, country, rating, and date-added metadata — to trace how the catalog grew and shifted over time.",
+      "Movies dominate at 69.6%, and TV-MA is the most common rating (3,207 titles). The US supplies the most titles (3,211), followed by India (1,008) and the UK (628). Titles-added peaked in 2019 at 2,016, then fell in 2020 and 2021 — consistent with COVID-19 disrupting production industry-wide."
+    ],
+    bullets: [
+      "Analyzed a dataset of 8,807 Netflix titles (2008–2021) to uncover content trends across genres, countries, and content types; identified a peak in 2019 followed by a COVID-related production slowdown in 2020–2021.",
+      "Discovered that 69.6% of Netflix's catalog is movies and that TV-MA is the most common content rating with 3,207 titles, communicating findings through targeted visualizations."
+    ],
+    tools: ["Python", "Pandas", "Matplotlib"],
+    demo: "netflix-dashboard.html",
+    demoCaption: "Filtering to TV Shows alone skews ratings even further toward TV-MA and TV-14, and the year chart makes the 2019 content peak and the pandemic-era slowdown clearly visible.",
+    links: [
+      { label: "Open full screen", href: "netflix-dashboard.html", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Netflix-Analysis" },
+      { label: "Dataset", href: "datasets/netflix-titles.csv" }
+    ]
+  },
+  {
+    title: "SQL Churn Queries",
+    status: "write-up available",
+    page: "projects/sql-churn-queries.html",
+    writeup: [
+      "This project runs six SQL queries against a 1,000-row practice telecom dataset in MySQL — covering aggregation, a join against a lookup table, a subquery, and two window functions — to demonstrate SQL fluency independent of the pandas-based analyses elsewhere in this portfolio.",
+      "The queries surface which customer segments churn most, flag which regions run above a churn-rate target using a joined lookup table, find high-value customers who churned anyway using a subquery, and rank customers by lifetime value within each region using a window function."
+    ],
+    overview: [
+      "A set of MySQL queries against a 1,000-row practice telecom churn dataset — joins, aggregations, a subquery, and two window functions — surfacing which customer segments churn most. This dataset also powers the Interactive Churn Dashboard."
+    ],
+    bullets: [
+      "Month-to-month customers churn at 51.9%, versus 16.7% for two-year contracts.",
+      "Fiber-optic customers churn more than DSL customers in every region, despite similar pricing.",
+      "All four regions run above a 30% churn-rate target, with North highest at 40.1%."
+    ],
+    tools: ["MySQL", "Joins", "Window functions", "Subqueries"],
+    code: `SELECT contract_type,
+       COUNT(*) AS total_customers,
+       ROUND(100.0 * SUM(CASE WHEN churn='Yes' THEN 1 ELSE 0 END)
+             / COUNT(*), 1) AS churn_rate_pct
+FROM customers
+GROUP BY contract_type
+ORDER BY churn_rate_pct DESC;`,
+    links: [
+      { label: "View live dashboard", href: "projects/churn-dashboard.html", primary: true },
+      { label: "Full write-up", href: "sql-project/README.md" },
+      { label: "All queries", href: "sql-project/churn_queries.sql" },
+      { label: "Dataset", href: "sql-project/customers.csv" },
+      { label: "View on GitHub", href: "https://github.com/Om-M67" }
+    ]
+  },
+  {
     title: "Duffing Oscillator Simulation",
     status: "write-up available",
     page: "projects/duffing-oscillator.html",
@@ -201,27 +222,6 @@ ORDER BY churn_rate_pct DESC;`,
     tools: ["Java", "Apache Maven"],
     links: [
       { label: "View on GitHub", href: "https://github.com/Om-M67", primary: true }
-    ]
-  },
-  {
-    title: "Netflix Analysis",
-    status: "live dashboard",
-    page: "projects/netflix-analysis.html",
-    writeup: [
-      "This project used the Netflix Movies and TV Shows dataset (as of 2021) — 8,807 titles with type, country, rating, and date-added metadata — to trace how the catalog grew and shifted over time.",
-      "Movies dominate at 69.6%, and TV-MA is the most common rating (3,207 titles). The US supplies the most titles (3,211), followed by India (1,008) and the UK (628). Titles-added peaked in 2019 at 2,016, then fell in 2020 and 2021 — consistent with COVID-19 disrupting production industry-wide."
-    ],
-    bullets: [
-      "Analyzed a dataset of 8,807 Netflix titles (2008–2021) to uncover content trends across genres, countries, and content types; identified a peak in 2019 followed by a COVID-related production slowdown in 2020–2021.",
-      "Discovered that 69.6% of Netflix's catalog is movies and that TV-MA is the most common content rating with 3,207 titles, communicating findings through targeted visualizations."
-    ],
-    tools: ["Python", "Pandas", "Matplotlib"],
-    demo: "netflix-dashboard.html",
-    demoCaption: "Filtering to TV Shows alone skews ratings even further toward TV-MA and TV-14, and the year chart makes the 2019 content peak and the pandemic-era slowdown clearly visible.",
-    links: [
-      { label: "Open full screen", href: "netflix-dashboard.html", primary: true },
-      { label: "View on GitHub", href: "https://github.com/Om-M67/Netflix-Analysis" },
-      { label: "Dataset", href: "datasets/netflix-titles.csv" }
     ]
   },
   {
@@ -289,31 +289,37 @@ function renderPanel(i) {
   document.getElementById('panelStatus').textContent = p.status;
   document.getElementById('panelTitle').textContent = p.title;
 
-  let html = '';
+  let textHtml = '';
   if (p.overview) {
-    html += '<h3>Overview</h3>';
-    p.overview.forEach(para => html += `<p>${para}</p>`);
+    textHtml += '<h3>Overview</h3>';
+    p.overview.forEach(para => textHtml += `<p>${para}</p>`);
   }
   if (p.bullets) {
-    if (!p.overview) html += '<h3>Overview</h3>';
-    html += '<ul class="bullets">' + p.bullets.map(b => `<li>${b}</li>`).join('') + '</ul>';
+    if (!p.overview) textHtml += '<h3>Overview</h3>';
+    textHtml += '<ul class="bullets">' + p.bullets.map(b => `<li>${b}</li>`).join('') + '</ul>';
   }
   if (p.writeup) {
-    html += '<h3>Write-up</h3>';
-    p.writeup.forEach(para => html += `<p>${para}</p>`);
+    textHtml += '<h3>Write-up</h3>';
+    p.writeup.forEach(para => textHtml += `<p>${para}</p>`);
   }
   if (p.tools) {
-    html += '<h3>Tools</h3><div class="panel-tools">' + p.tools.map(t => `<span>${t}</span>`).join('') + '</div>';
+    textHtml += '<h3>Tools</h3><div class="panel-tools">' + p.tools.map(t => `<span>${t}</span>`).join('') + '</div>';
   }
   if (p.code) {
-    html += `<h3>Example query</h3><pre class="panel-code">${p.code}</pre>`;
+    textHtml += `<h3>Example query</h3><pre class="panel-code">${p.code}</pre>`;
   }
+
+  let html = '';
   if (p.demo) {
-    html += `<h3>Live demo</h3><div class="panel-demo-frame"><iframe src="${p.demo}" title="${p.title}"></iframe></div>`;
+    let demoHtml = `<h3>Live demo</h3><div class="panel-demo-frame"><iframe src="${p.demo}" title="${p.title}"></iframe></div>`;
     if (p.demoCaption) {
-      html += `<p class="demo-caption">${p.demoCaption}</p>`;
+      demoHtml += `<p class="demo-caption">${p.demoCaption}</p>`;
     }
+    html += `<div class="panel-columns"><div class="panel-col-text">${textHtml}</div><div class="panel-col-demo">${demoHtml}</div></div>`;
+  } else {
+    html += textHtml;
   }
+
   if (p.links) {
     html += '<h3>Links</h3><div class="panel-links">' + p.links.map(l =>
       `<a href="${l.href}" target="_blank" rel="noopener"${l.primary ? ' class="primary"' : ''}>${l.label} →</a>`
