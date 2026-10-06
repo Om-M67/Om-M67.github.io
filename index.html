@@ -159,6 +159,61 @@ const PROJECTS = [
     ]
   },
   {
+    title: "Duffing Oscillator Simulation",
+    status: "write-up available",
+    page: "projects/duffing-oscillator.html",
+    writeup: [
+      "The Duffing oscillator is a nonlinear differential equation modeling systems with a restoring force that isn't proportional to displacement — like a stiffening spring or driven pendulum. It can produce chaotic behavior where small changes in initial conditions send the system down wildly different trajectories.",
+      "Since it has no general closed-form solution, this project solved it numerically with the fourth-order Runge-Kutta method (RK4), then applied a Discrete Fourier Transform to reveal which oscillation frequencies dominate as the driving force shifts from periodic into chaotic regimes."
+    ],
+    bullets: [
+      "Implemented a numerical solution using the fourth-order Runge-Kutta method, demonstrating ability to reason through and debug complex algorithmic logic.",
+      "Applied Discrete Fourier Transform (DFT) to study frequency components; developed scripts utilizing NumPy, SciPy, and Matplotlib for efficient computation and analysis."
+    ],
+    tools: ["Python", "Jupyter Notebook", "NumPy", "SciPy"],
+    image: "images/duffing-analysis.png",
+    links: [
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Duffing-Oscillator", primary: true }
+    ]
+  },
+  {
+    title: "Casino Royale Blackjack",
+    status: "live demo",
+    page: "projects/blackjack.html",
+    overview: [
+      "A full-featured Blackjack game built five different ways from the same core logic — a Python desktop app (Pygame), a multiplayer Discord bot, a local WebSocket multiplayer web app, a standalone single-file HTML version, and a hosted React web app supporting up to 6 players at once."
+    ],
+    bullets: [
+      "Implements real-time Basic Strategy recommendations (\"the Book\") on every turn — the mathematically optimal move based on hand total, dealer's upcard, and double/split availability, which reduces the house edge to roughly 0.5%.",
+      "Runs a live Monte Carlo simulation (300+ runs per move) after every card to estimate real-time win/push/lose probability, sharpening as more cards are dealt.",
+      "Handles the full rule set correctly: soft hands and Ace logic, double down, and a 2.5x natural blackjack payout, with a persistent chip balance across rounds."
+    ],
+    tools: ["Python", "Pygame", "discord.py", "WebSockets", "React"],
+    image: "images/blackjack-game.png",
+    links: [
+      { label: "Play live game", href: "https://blackjack--omm67.replit.app/", primary: true },
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Book-based-Blackjack" }
+    ]
+  },
+  {
+    title: "Discord Schedule Bot",
+    status: "write-up available",
+    page: "projects/discord-bot.html",
+    overview: [
+      "A Discord bot that solves the everyday problem of a group trying to agree on a time to hang out or game — instead of a back-and-forth chat thread, it turns scheduling into a one-click poll."
+    ],
+    bullets: [
+      "The organizer runs /schedule with an event name and a few candidate times; the bot posts a button per time slot and everyone clicks the ones that work for them.",
+      "Running /lockin tallies the votes, picks the slot with the most support (ties go to the earliest time), and announces the winner — then automatically pings everyone who voted for it when that time arrives.",
+      "Built to run continuously on a free hosting service (Railway) rather than requiring someone's laptop to stay on, with the bot token kept out of the codebase via environment variables."
+    ],
+    tools: ["Python", "discord.py"],
+    image: "images/discord-bot.png",
+    links: [
+      { label: "View on GitHub", href: "https://github.com/Om-M67/Discord-Bot", primary: true }
+    ]
+  },
+  {
     title: "SQL Churn Queries",
     status: "write-up available",
     page: "projects/sql-churn-queries.html",
@@ -191,23 +246,6 @@ ORDER BY churn_rate_pct DESC;`,
     ]
   },
   {
-    title: "Duffing Oscillator Simulation",
-    status: "write-up available",
-    page: "projects/duffing-oscillator.html",
-    writeup: [
-      "The Duffing oscillator is a nonlinear differential equation modeling systems with a restoring force that isn't proportional to displacement — like a stiffening spring or driven pendulum. It can produce chaotic behavior where small changes in initial conditions send the system down wildly different trajectories.",
-      "Since it has no general closed-form solution, this project solved it numerically with the fourth-order Runge-Kutta method (RK4), then applied a Discrete Fourier Transform to reveal which oscillation frequencies dominate as the driving force shifts from periodic into chaotic regimes."
-    ],
-    bullets: [
-      "Implemented a numerical solution using the fourth-order Runge-Kutta method, demonstrating ability to reason through and debug complex algorithmic logic.",
-      "Applied Discrete Fourier Transform (DFT) to study frequency components; developed scripts utilizing NumPy, SciPy, and Matplotlib for efficient computation and analysis."
-    ],
-    tools: ["Python", "Jupyter Notebook", "NumPy", "SciPy"],
-    links: [
-      { label: "View on GitHub", href: "https://github.com/Om-M67/Duffing-Oscillator", primary: true }
-    ]
-  },
-  {
     title: "KelogsDojo",
     status: "write-up available",
     page: "projects/kelogsdojo.html",
@@ -222,41 +260,6 @@ ORDER BY churn_rate_pct DESC;`,
     tools: ["Java", "Apache Maven"],
     links: [
       { label: "View on GitHub", href: "https://github.com/Om-M67", primary: true }
-    ]
-  },
-  {
-    title: "Casino Royale Blackjack",
-    status: "live demo",
-    page: "projects/blackjack.html",
-    overview: [
-      "A full-featured Blackjack game built five different ways from the same core logic — a Python desktop app (Pygame), a multiplayer Discord bot, a local WebSocket multiplayer web app, a standalone single-file HTML version, and a hosted React web app supporting up to 6 players at once."
-    ],
-    bullets: [
-      "Implements real-time Basic Strategy recommendations (\"the Book\") on every turn — the mathematically optimal move based on hand total, dealer's upcard, and double/split availability, which reduces the house edge to roughly 0.5%.",
-      "Runs a live Monte Carlo simulation (300+ runs per move) after every card to estimate real-time win/push/lose probability, sharpening as more cards are dealt.",
-      "Handles the full rule set correctly: soft hands and Ace logic, double down, and a 2.5x natural blackjack payout, with a persistent chip balance across rounds."
-    ],
-    tools: ["Python", "Pygame", "discord.py", "WebSockets", "React"],
-    links: [
-      { label: "Play live game", href: "https://blackjack--omm67.replit.app/", primary: true },
-      { label: "View on GitHub", href: "https://github.com/Om-M67/Book-based-Blackjack" }
-    ]
-  },
-  {
-    title: "Discord Schedule Bot",
-    status: "write-up available",
-    page: "projects/discord-bot.html",
-    overview: [
-      "A Discord bot that solves the everyday problem of a group trying to agree on a time to hang out or game — instead of a back-and-forth chat thread, it turns scheduling into a one-click poll."
-    ],
-    bullets: [
-      "The organizer runs /schedule with an event name and a few candidate times; the bot posts a button per time slot and everyone clicks the ones that work for them.",
-      "Running /lockin tallies the votes, picks the slot with the most support (ties go to the earliest time), and announces the winner — then automatically pings everyone who voted for it when that time arrives.",
-      "Built to run continuously on a free hosting service (Railway) rather than requiring someone's laptop to stay on, with the bot token kept out of the codebase via environment variables."
-    ],
-    tools: ["Python", "discord.py"],
-    links: [
-      { label: "View on GitHub", href: "https://github.com/Om-M67/Discord-Bot", primary: true }
     ]
   }
 ];
@@ -316,6 +319,9 @@ function renderPanel(i) {
       demoHtml += `<p class="demo-caption">${p.demoCaption}</p>`;
     }
     html += `<div class="panel-columns"><div class="panel-col-text">${textHtml}</div><div class="panel-col-demo">${demoHtml}</div></div>`;
+  } else if (p.image) {
+    let imageHtml = `<h3>Screenshot</h3><div class="panel-col-image"><img src="${p.image}" alt="${p.title}" loading="lazy"></div>`;
+    html += `<div class="panel-columns"><div class="panel-col-text">${textHtml}</div>${imageHtml}</div>`;
   } else {
     html += textHtml;
   }

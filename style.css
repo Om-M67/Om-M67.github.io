@@ -431,6 +431,7 @@ pre.modal-code {
 .panel-demo-frame { border: 1px solid var(--panel-line); border-radius: 6px; overflow: hidden; background: var(--bg); }
 .panel-demo-frame iframe { width: 100%; height: 700px; border: none; display: block; }
 .panel-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.panel-col-image img { width: 100%; border-radius: 8px; border: 1px solid var(--panel-line); display: block; }
 .demo-caption { font-size: 13px; color: var(--text-dim); margin-top: 10px; padding-left: 14px; border-left: 2px solid var(--panel-line); max-width: 62ch; }
 pre.panel-code { border: 1px solid var(--panel-line); border-radius: 4px; padding: 16px; background: var(--bg); font-family: var(--mono); font-size: 12px; color: var(--text); overflow-x: auto; white-space: pre-wrap; }
 .panel-links { display: flex; flex-wrap: wrap; gap: 20px; font-family: var(--mono); font-size: 13.5px; }
